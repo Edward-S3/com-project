@@ -1,0 +1,38 @@
+# Secrets / local config
+.env
+.env.*
+!.env.example
+bk.env
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+
+# Runtime data
+*.db
+*.log
+logs/
+tmp/
+chroma_db/
+chat_history.db
+
+# IDE / AI tooling
+.claude/
+.cursor/
+
+# OS / misc
+.DS_Store
+Thumbs.db
+
+# Non-app directories under /opt
+containerd/
+google/
+ressrv/
+reportb/
+
+# Large optional archives (extracted assets are kept)
+*.zip

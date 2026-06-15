@@ -1,0 +1,13 @@
+[Unit]
+Description=Employee Evaluation Streamlit App
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/employee_eval_tool
+Environment="PATH=/opt/employee_eval_tool/venv/bin"
+ExecStart=/opt/employee_eval_tool/venv/bin/streamlit run app.py --server.port 8502 --server.address 0.0.0.0
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

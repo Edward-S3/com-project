@@ -1,0 +1,6 @@
+streamlit
+pandas
+matplotlib
+google-generativeai
+fpdf
+python-dotenv

@@ -1,0 +1,18 @@
+[Unit]
+Description=Gemini Chat Admin Panel (Port 8508)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/gemini-ui
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/opt/gemini-ui/venv/bin/streamlit run admin.py \
+    --server.port 8508 \
+    --server.address 172.16.16.10 \
+    --server.headless true \
+    --browser.gatherUsageStats false
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

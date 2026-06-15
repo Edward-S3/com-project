@@ -1,0 +1,4 @@
+# Streamlit サーバー設定
+# アプリ側（DB）の添付上限とは別に、ブラウザ→サーバー間の物理的上限
+[server]
+maxUploadSize = 500

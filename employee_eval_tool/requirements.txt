@@ -1,0 +1,17 @@
+streamlit
+google-generativeai
+pandas
+python-docx
+python-pptx
+openpyxl
+pdfplumber
+pdf2image
+pytesseract
+Pillow
+pydantic
+requests
+python-dotenv
+matplotlib
+japanize-matplotlib
+numpy
+reportlab

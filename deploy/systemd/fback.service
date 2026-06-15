@@ -1,0 +1,18 @@
+[Unit]
+Description=Streamlit Feedback App
+After=network.target
+
+[Service]
+# 作業ディレクトリの指定
+WorkingDirectory=/opt/fback
+# 仮想環境内のpythonを使用してstreamlitを起動
+ExecStart=/opt/fback/venv/bin/python3 -m streamlit run app.py --server.port 8503 --server.address 0.0.0.0
+# プロセスが落ちた場合に自動再起動
+Restart=always
+# 実行ユーザー（適切なユーザー名に変えてください）
+User=root
+# 環境変数の設定（必要に応じて）
+Environment=PYTHONPATH=/opt/fback
+
+[Install]
+WantedBy=multi-user.target

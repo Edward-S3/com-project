@@ -1,0 +1,17 @@
+[Unit]
+Description=Launcher Server Status API (Port 8510)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/gemini-ui
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/opt/gemini-ui/venv/bin/uvicorn server_status_api:app \
+    --host 172.16.16.10 \
+    --port 8510 \
+    --log-level warning
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,19 @@
+[Unit]
+Description=FAQ Bot Admin Access Logs (Streamlit, Port 8506)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/faq-bot
+# print出力をリアルタイムでjournalに反映させる（バッファ無効化）
+Environment="PYTHONUNBUFFERED=1"
+# 管理ログ画面のポート（必要に応じて変更可。デフォルト 8506）
+Environment="ADMIN_LOGS_PORT=8506"
+# バインドアドレス（デフォルト: メインサービスと同じIP）
+Environment="ADMIN_LOGS_ADDRESS=172.16.16.10"
+ExecStart=/opt/faq-bot/scripts/run_admin_logs.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

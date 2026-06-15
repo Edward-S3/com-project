@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>業務アプリ ランチャー</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f6f8fa;
+      --surface:   #ffffff;
+      --border:    #d0d7de;
+      --accent:    #0969da;
+      --text:      #1f2328;
+      --muted:     #656d76;
+      --radius:    14px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Segoe UI", "Hiragino Sans", "Meiryo", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── ヘッダー ── */
+    header {
+      padding: 36px 40px 28px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, #f6f8fa 0%, #ffffff 100%);
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .header-admin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid #0969da55;
+      border-radius: 10px;
+      background: #ddf4ff;
+      color: #0969da;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+    .header-admin-btn:hover {
+      background: #b6e3ff;
+      box-shadow: 0 2px 10px rgba(9, 105, 218, 0.15);
+    }
+    .logo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #1f6feb, #388bfd);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(56, 139, 253, 0.35);
+    }
+    .header-text h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .header-text p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    /* ── メイン ── */
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 48px 40px;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* ── グリッド ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── カード ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 26px 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--card-color1, #1f6feb22) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      border-radius: var(--radius);
+    }
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(9, 105, 218, 0.12);
+      transform: translateY(-3px);
+    }
+    .card:hover::before { opacity: 1; }
+    .card:active { transform: translateY(-1px); }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .card-body { flex: 1; }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .badge-streamlit {
+      color: #ff4b4b;
+      border-color: #ff4b4b44;
+      background: #ff4b4b11;
+    }
+    .arrow {
+      color: var(--muted);
+      font-size: 1.1rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .card:hover .arrow {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* カラーバリエーション */
+    .card-faq   { --card-color1: #1f6feb33; }
+    .card-eval  { --card-color1: #3fb95033; }
+    .card-surv  { --card-color1: #a371f733; }
+    .card-exam  { --card-color1: #f7853033; }
+    .card-nai      { --card-color1: #0d9ddb33; }
+    .card-naictrl  { --card-color1: #bf870033; }
+    .card-tts      { --card-color1: #8250df33; }
+
+    .icon-faq  { background: linear-gradient(135deg, #1f6feb, #388bfd); box-shadow: 0 0 14px #1f6feb44; }
+    .icon-eval { background: linear-gradient(135deg, #238636, #3fb950); box-shadow: 0 0 14px #23863644; }
+    .icon-surv { background: linear-gradient(135deg, #6e40c9, #a371f7); box-shadow: 0 0 14px #6e40c944; }
+    .icon-exam { background: linear-gradient(135deg, #d1242f, #f78166); box-shadow: 0 0 14px #d1242f44; }
+    .icon-nai      { background: linear-gradient(135deg, #0d9ddb, #00d4ff); box-shadow: 0 0 14px #0d9ddb44; }
+    .icon-naictrl  { background: linear-gradient(135deg, #bf8700, #d4a72c); box-shadow: 0 0 14px #bf870044; }
+    .icon-tts      { background: linear-gradient(135deg, #8250df, #a475f9); box-shadow: 0 0 14px #8250df44; }
+
+    /* ── 管理者向けサーバー状況 ── */
+    .admin-panel-wrap {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 8px 40px 40px;
+      border-top: 2px solid #dde7f3;
+      background: linear-gradient(180deg, #f0f6fc 0%, var(--bg) 100%);
+    }
+    .admin-section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .admin-section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0969da;
+    }
+    .admin-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid #0969da;
+      border-radius: 10px;
+      background: #fff;
+      color: #0969da;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .admin-toggle-btn:hover {
+      background: #ddf4ff;
+      box-shadow: 0 2px 10px rgba(9, 105, 218, 0.12);
+    }
+    .admin-panel {
+      display: none;
+      margin-top: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .admin-panel.open { display: block; }
+    .admin-panel h2 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .admin-panel .sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .admin-login {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+      align-items: end;
+      max-width: 720px;
+    }
+    .admin-login label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .admin-login input {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    .admin-login button, .admin-logout-btn {
+      padding: 9px 16px;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .admin-logout-btn {
+      background: #656d76;
+      margin-left: 8px;
+    }
+    .admin-error {
+      color: #cf222e;
+      font-size: 0.82rem;
+      margin-top: 10px;
+      min-height: 1.2em;
+    }
+    .status-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .status-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .status-badge.ok {
+      color: #1a7f37;
+      border-color: #1a7f3744;
+      background: #1a7f3711;
+    }
+    .status-badge.warn {
+      color: #9a6700;
+      border-color: #9a670044;
+      background: #9a670011;
+    }
+    .status-badge.critical {
+      color: #cf222e;
+      border-color: #cf222e44;
+      background: #cf222e11;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .metric-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      background: #fafbfc;
+    }
+    .metric-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .metric-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .metric-bar {
+      height: 6px;
+      background: #e6eaef;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .metric-bar > span {
+      display: block;
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+    .bar-ok { background: #1a7f37; }
+    .bar-warn { background: #bf8700; }
+    .bar-critical { background: #cf222e; }
+    .metric-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .services-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .services-table th, .services-table td {
+      border-bottom: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .services-table th {
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .svc-active { color: #1a7f37; font-weight: 600; }
+    .svc-down { color: #cf222e; font-weight: 600; }
+    .status-updated {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── フッター ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 18px 40px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    footer span { color: var(--accent); }
+    .footer-admin-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: #0969da;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .footer-admin-link:hover { color: #0550ae; }
+
+    /* ── レスポンシブ ── */
+    @media (max-width: 600px) {
+      header, main, .admin-panel-wrap { padding-left: 20px; padding-right: 20px; }
+      .header-text h1 { font-size: 1.2rem; }
+      main { padding-top: 32px; }
+      .admin-login {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="logo">🚀</div>
+      <div class="header-text">
+        <h1>業務アプリ ランチャー</h1>
+        <p>社内向けAI業務支援システム一覧</p>
+      </div>
+    </div>
+    <button type="button" class="header-admin-btn" id="header-admin-btn" title="管理者向けサーバー負荷モニター">
+      📊 サーバー状況（管理者）
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="section-label">利用可能なアプリケーション</div>
+  <div class="grid" id="app-grid"></div>
+</main>
+
+<section class="admin-panel-wrap" id="admin-section">
+  <div class="admin-section-head">
+    <div class="admin-section-title">管理者向け — サーバー負荷モニター</div>
+    <button type="button" class="admin-toggle-btn" id="admin-toggle" aria-expanded="false">
+      📊 表示する / 隠す
+    </button>
+  </div>
+  <div class="admin-panel" id="admin-panel" aria-hidden="true">
+    <div id="admin-login-view">
+      <h2>サーバー負荷モニター</h2>
+      <p class="sub">管理者アカウントでログインすると、サーバー負荷と各アプリの稼働状況を確認できます（10秒間隔で自動更新）。</p>
+      <form class="admin-login" id="admin-login-form">
+        <div>
+          <label for="admin-emp">社員番号 / ID</label>
+          <input id="admin-emp" name="employee_id" autocomplete="username" required />
+        </div>
+        <div>
+          <label for="admin-pass">パスワード</label>
+          <input id="admin-pass" name="password" type="password" autocomplete="current-password" required />
+        </div>
+        <button type="submit">ログイン</button>
+      </form>
+      <div class="admin-error" id="admin-login-error"></div>
+    </div>
+    <div id="admin-status-view" style="display:none;">
+      <div class="status-header">
+        <div>
+          <h2>サーバー負荷モニター</h2>
+          <p class="sub" id="admin-viewer-line"></p>
+        </div>
+        <div>
+          <span class="status-badge ok" id="overall-badge">正常</span>
+          <button type="button" class="admin-logout-btn" id="admin-logout">ログアウト</button>
+        </div>
+      </div>
+      <div class="metrics-grid" id="metrics-grid"></div>
+      <div class="section-label" style="margin-top:8px;">アプリ稼働状況</div>
+      <table class="services-table">
+        <thead>
+          <tr><th>アプリ</th><th>サービス</th><th>状態</th></tr>
+        </thead>
+        <tbody id="services-body"></tbody>
+      </table>
+      <p class="status-updated" id="status-updated" style="margin-top:12px;"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Powered by <span>Nginx</span> &amp; <span>Streamlit</span> &nbsp;|&nbsp; 社内利用専用
+  <br>
+  <span class="footer-admin-link" id="footer-admin-link">管理者の方: サーバー負荷状況はこちら</span>
+</footer>
+
+<script>
+  const apps = [
+    {
+      path: "/nk-faq/",
+      title: "社内FAQボット",
+      subtitle: "中星工業 Q&A Webボット",
+      desc: "社内文書・マニュアルをAIが検索し、質問に自動回答します。RAG（検索拡張生成）技術を活用したチャット型インターフェース。",
+      icon: "🤖",
+      iconClass: "icon-faq",
+      cardClass: "card-faq",
+    },
+    {
+      path: "/rep-eva/",
+      title: "社員成果物 自動評価ツール",
+      subtitle: "Employee Evaluation Tool",
+      desc: "Word・PDF・Excel 等の成果物をAIが読み込み、等級・勤続年数に応じた客観的評価と改善案を生成します。",
+      icon: "📑",
+      iconClass: "icon-eval",
+      cardClass: "card-eval",
+    },
+    {
+      path: "/sby/?admin=true",
+      title: "汎用アンケートシステム",
+      subtitle: "フィードバック収集・集計",
+      desc: "社内アンケートの作成・配布・集計・分析をワンストップで管理。管理者ダッシュボードで回答状況をリアルタイム確認。",
+      icon: "📊",
+      iconClass: "icon-surv",
+      cardClass: "card-surv",
+    },
+    {
+      path: "/exam/",
+      title: "試験問題作成・採点・評価システム",
+      subtitle: "Exam Management System",
+      desc: "試験問題の作成・編集から受験・自動採点・結果分析まで一元管理。出題傾向レポートと解答解説にも対応。",
+      icon: "📝",
+      iconClass: "icon-exam",
+      cardClass: "card-exam",
+    },
+    {
+      path: "/nai/",
+      title: "社内 AI アシスタント",
+      subtitle: "Gemini Chat (NAI)",
+      desc: "Google Gemini を活用した汎用 AI チャット。モデル・システムプロンプト・温度パラメータを自由に設定。会話履歴・利用ログを自動保存。",
+      icon: "✨",
+      iconClass: "icon-nai",
+      cardClass: "card-nai",
+    },
+    {
+      path: "/nai-ctrl/",
+      title: "社内 AI アシスタント 管理パネル",
+      subtitle: "NAI Admin (naictrl)",
+      desc: "ユーザー管理・利用ログ・フィードバック・テンプレート・LLM 設定など、社内 AI アシスタントの管理者向けパネル。",
+      icon: "🔐",
+      iconClass: "icon-naictrl",
+      cardClass: "card-naictrl",
+    },
+    {
+      path: "/tts/",
+      title: "音声合成ツール",
+      subtitle: "Google Text-to-Speech (TTS)",
+      desc: "テキストを入力して Google Text-to-Speech API で音声を合成。音声モデル・ボイスを選択し、WAV ファイルをダウンロードできます。",
+      icon: "🔊",
+      iconClass: "icon-tts",
+      cardClass: "card-tts",
+    },
+  ];
+
+  const grid = document.getElementById("app-grid");
+  const base = location.origin;
+
+  apps.forEach(app => {
+    const url = base + app.path;
+    const card = document.createElement("a");
+    card.href = url;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    card.className = `card ${app.cardClass}`;
+    card.innerHTML = `
+      <div class="card-icon ${app.iconClass}">${app.icon}</div>
+      <div class="card-body">
+        <div class="card-title">${app.title}</div>
+        <div class="card-desc">${app.desc}</div>
+      </div>
+      <div class="card-footer">
+        <span class="badge badge-streamlit">Streamlit</span>
+        <span class="arrow">→</span>
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  // ── 管理者向けサーバー状況 ──
+  const API_BASE = location.origin + "/api/server-status";
+  const TOKEN_KEY = "launcher_admin_token";
+  const POLL_SEC = 10;
+
+  const adminToggle = document.getElementById("admin-toggle");
+  const adminPanel = document.getElementById("admin-panel");
+  const loginView = document.getElementById("admin-login-view");
+  const statusView = document.getElementById("admin-status-view");
+  const loginForm = document.getElementById("admin-login-form");
+  const loginError = document.getElementById("admin-login-error");
+  const logoutBtn = document.getElementById("admin-logout");
+  const metricsGrid = document.getElementById("metrics-grid");
+  const servicesBody = document.getElementById("services-body");
+  const overallBadge = document.getElementById("overall-badge");
+  const statusUpdated = document.getElementById("status-updated");
+  const viewerLine = document.getElementById("admin-viewer-line");
+
+  let pollTimer = null;
+
+  function barClass(level) {
+    if (level === "critical") return "bar-critical";
+    if (level === "warn") return "bar-warn";
+    return "bar-ok";
+  }
+
+  function metricLevel(value, warn, critical) {
+    if (value >= critical) return "critical";
+    if (value >= warn) return "warn";
+    return "ok";
+  }
+
+  function overallLabel(level) {
+    if (level === "critical") return "高負荷";
+    if (level === "warn") return "注意";
+    return "正常";
+  }
+
+  function renderMetrics(data) {
+    const cpuLevel = metricLevel(data.cpu_percent, 75, 90);
+    const memLevel = metricLevel(data.memory.percent, 80, 92);
+    const loadLevel = metricLevel(data.load.load_ratio, 0.7, 1.0);
+    const diskLevel = metricLevel(data.disk.percent, 85, 95);
+
+    metricsGrid.innerHTML = `
+      <div class="metric-card">
+        <div class="metric-label">CPU 使用率</div>
+        <div class="metric-value">${data.cpu_percent}%</div>
+        <div class="metric-bar"><span class="${barClass(cpuLevel)}" style="width:${Math.min(data.cpu_percent, 100)}%"></span></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">メモリ使用率</div>
+        <div class="metric-value">${data.memory.percent}%</div>
+        <div class="metric-bar"><span class="${barClass(memLevel)}" style="width:${Math.min(data.memory.percent, 100)}%"></span></div>
+        <div class="metric-sub">${data.memory.used_gb} / ${data.memory.total_gb} GB（空き ${data.memory.available_gb} GB）</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">ロードアベレージ（1分）</div>
+        <div class="metric-value">${data.load.load_1m}</div>
+        <div class="metric-bar"><span class="${barClass(loadLevel)}" style="width:${Math.min(data.load.load_ratio * 100, 100)}%"></span></div>
+        <div class="metric-sub">CPU ${data.load.cpu_count} コア比 ${data.load.load_ratio}（5分 ${data.load.load_5m} / 15分 ${data.load.load_15m}）</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">ディスク使用率（/）</div>
+        <div class="metric-value">${data.disk.percent}%</div>
+        <div class="metric-bar"><span class="${barClass(diskLevel)}" style="width:${Math.min(data.disk.percent, 100)}%"></span></div>
+        <div class="metric-sub">${data.disk.used_gb} / ${data.disk.total_gb} GB（空き ${data.disk.free_gb} GB）</div>
+      </div>`;
+
+    servicesBody.innerHTML = data.services.map(s => `
+      <tr>
+        <td>${s.label}</td>
+        <td>${s.unit}</td>
+        <td class="${s.status === "active" ? "svc-active" : "svc-down"}">${s.status}</td>
+      </tr>`).join("");
+
+    overallBadge.className = `status-badge ${data.overall}`;
+    overallBadge.textContent = overallLabel(data.overall);
+    if (data.viewer_name) {
+      viewerLine.textContent = `ログイン中: ${data.viewer_name}（${data.viewer}）`;
+    }
+    statusUpdated.textContent = `最終更新: ${data.timestamp} JST（${POLL_SEC} 秒間隔で自動更新）`;
+    if (data.inactive_services && data.inactive_services.length) {
+      statusUpdated.textContent += ` ／ 停止中: ${data.inactive_services.join("、")}`;
+    }
+  }
+
+  async function fetchMetrics() {
+    const token = sessionStorage.getItem(TOKEN_KEY);
+    if (!token) return;
+    const res = await fetch(API_BASE + "/metrics", {
+      headers: { Authorization: "Bearer " + token },
+    });
+    if (res.status === 401) {
+      stopPolling();
+      sessionStorage.removeItem(TOKEN_KEY);
+      showLoginView();
+      loginError.textContent = "セッションの有効期限が切れました。再ログインしてください。";
+      return;
+    }
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      statusUpdated.textContent = err.error || "メトリクスの取得に失敗しました。";
+      return;
+    }
+    const data = await res.json();
+    renderMetrics(data);
+  }
+
+  function showLoginView() {
+    loginView.style.display = "block";
+    statusView.style.display = "none";
+  }
+
+  function showStatusView(username, employeeId) {
+    loginView.style.display = "none";
+    statusView.style.display = "block";
+    viewerLine.textContent = `ログイン中: ${username}（${employeeId}）`;
+    loginError.textContent = "";
+  }
+
+  function startPolling() {
+    stopPolling();
+    fetchMetrics();
+    pollTimer = setInterval(fetchMetrics, POLL_SEC * 1000);
+  }
+
+  function stopPolling() {
+    if (pollTimer) {
+      clearInterval(pollTimer);
+      pollTimer = null;
+    }
+  }
+
+  function openAdminPanel(scroll = true) {
+    adminPanel.classList.add("open");
+    adminToggle.setAttribute("aria-expanded", "true");
+    adminPanel.setAttribute("aria-hidden", "false");
+    if (scroll) {
+      document.getElementById("admin-section").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function toggleAdminPanel() {
+    const open = adminPanel.classList.toggle("open");
+    adminToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    adminPanel.setAttribute("aria-hidden", open ? "false" : "true");
+    if (open) {
+      document.getElementById("admin-section").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  adminToggle.addEventListener("click", () => toggleAdminPanel());
+  document.getElementById("header-admin-btn").addEventListener("click", () => openAdminPanel(true));
+  document.getElementById("footer-admin-link").addEventListener("click", () => openAdminPanel(true));
+
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    loginError.textContent = "";
+    const body = {
+      employee_id: document.getElementById("admin-emp").value.trim(),
+      password: document.getElementById("admin-pass").value,
+    };
+    try {
+      const res = await fetch(API_BASE + "/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        loginError.textContent = data.error || "ログインに失敗しました。";
+        return;
+      }
+      sessionStorage.setItem(TOKEN_KEY, data.token);
+      showStatusView(data.username, data.employee_id);
+      startPolling();
+    } catch (err) {
+      loginError.textContent = "API に接続できません。サービスが起動しているか確認してください。";
+    }
+  });
+
+  logoutBtn.addEventListener("click", () => {
+    stopPolling();
+    sessionStorage.removeItem(TOKEN_KEY);
+    loginForm.reset();
+    showLoginView();
+  });
+
+  if (sessionStorage.getItem(TOKEN_KEY)) {
+    openAdminPanel(false);
+    showStatusView("管理者", "");
+    startPolling();
+  }
+</script>
+</body>
+</html>

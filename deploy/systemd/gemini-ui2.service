@@ -1,0 +1,19 @@
+[Unit]
+Description=Gemini Chat UI v2 (Port 8512)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/gemini-ui2
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/opt/gemini-ui2/venv/bin/streamlit run app.py \
+    --server.port 8512 \
+    --server.address 172.16.16.10 \
+    --server.headless true \
+    --browser.gatherUsageStats false \
+    --server.maxUploadSize 500
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
