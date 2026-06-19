@@ -1,0 +1,3 @@
+# このファイルは git に含めません（.gitignore 済み）
+# 1行目に GitHub Personal Access Token のみを記載してください
+# 例: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

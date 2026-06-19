@@ -4,6 +4,7 @@
 !.env.example
 bk.env
 .streamlit/secrets.toml
+deploy/github/.github-token
 
 # Python
 __pycache__/

@@ -1,0 +1,10 @@
+# Git コミット時の作者情報（git config を使わず環境変数で設定）
+# 使い方: source /opt/deploy/github/git-env.example
+export GIT_AUTHOR_NAME="Edward-S3"
+export GIT_AUTHOR_EMAIL="YOUR_EMAIL@example.com"
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+
+# GitHub 個人アカウント
+export GITHUB_USERNAME="Edward-S3"
+export GITHUB_REPO="com-project"
