@@ -3,10 +3,15 @@ admin.py — 管理者パネル
 ユーザー管理 / テンプレート管理 / システム設定 / ログ / フィードバック / 統計
 """
 import os
+import sys
 import datetime
 import streamlit as st
 import pandas as pd
 from dotenv import load_dotenv
+
+_SHARED_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "shared"))
+if _SHARED_ROOT not in sys.path:
+    sys.path.insert(0, _SHARED_ROOT)
 
 import db
 import llm_providers as llm
@@ -14,7 +19,7 @@ import sync_env_job
 import ui_common
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "Admin1234")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "nakaboshi_admin0123")
 JST = datetime.timezone(datetime.timedelta(hours=9))
 
 

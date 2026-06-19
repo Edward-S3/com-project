@@ -27,7 +27,7 @@ import ui_common
 # 初期設定
 # ══════════════════════════════════════════════════════════
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "Admin1234")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "nakaboshi_admin0123")
 APP_DIR        = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_TMP_DIR = os.path.join(APP_DIR, "tmp", "uploads")
 JST            = datetime.timezone(datetime.timedelta(hours=9))

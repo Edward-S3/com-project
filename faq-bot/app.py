@@ -29,6 +29,7 @@ from access_log_store import clear_access_log, init_access_log, log_access
 # ⚙️ 初期設定・環境変数
 # ==========================================
 load_dotenv()
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "nakaboshi_admin0123")
 raw_keys = os.getenv("GOOGLE_API_KEYS", os.getenv("GOOGLE_API_KEY", ""))
 API_KEYS_LIST = [k.strip() for k in raw_keys.split(",") if k.strip()]
 
@@ -350,7 +351,7 @@ with st.sidebar:
 
     with st.expander("🛠️ 管理者メニュー"):
         pw = st.text_input("管理者パスワード", type="password")
-        if pw == "nakaboshi2024":
+        if pw == ADMIN_PASSWORD:
             st.subheader("📁 ファイル管理")
             up = st.file_uploader("資料追加 (※サブフォルダ配置はサーバー直接操作)", type=list(SUPPORTED_DOC_EXTS))
             if up:

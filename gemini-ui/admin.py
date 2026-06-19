@@ -3,10 +3,15 @@ admin.py — 管理者パネル
 ユーザー管理 / テンプレート管理 / システム設定 / ログ / フィードバック / 統計
 """
 import os
+import sys
 import datetime
 import streamlit as st
 import pandas as pd
 from dotenv import load_dotenv
+
+_SHARED_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "shared"))
+if _SHARED_ROOT not in sys.path:
+    sys.path.insert(0, _SHARED_ROOT)
 
 import db
 import llm_providers as llm
@@ -14,9 +19,10 @@ import maintenance_log
 import sync_env_job
 import template_registry as tmpl_reg
 import ui_common
+from user_admin import render_exam_users, render_fback_users, render_nai_v2_users
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), ".env"))
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "Admin1234")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "nakaboshi_admin0123")
 JST = datetime.timezone(datetime.timedelta(hours=9))
 
 
@@ -406,6 +412,28 @@ def _clear_user_filters() -> None:
 
 def page_users() -> None:
     st.markdown("# 👤 ユーザー管理")
+    st.caption("アプリごとのタブでユーザーアカウントを一元管理します。各アプリ内のユーザー管理画面からも同じ内容を編集できます。")
+
+    tab_nai, tab_nai2, tab_exam, tab_fback = st.tabs([
+        "NAI / TTS",
+        "NAI v2",
+        "試験 (exam)",
+        "アンケート (fback)",
+    ], key="unified_user_app_tabs")
+
+    with tab_nai:
+        page_users_nai()
+    with tab_nai2:
+        render_nai_v2_users()
+    with tab_exam:
+        render_exam_users()
+    with tab_fback:
+        render_fback_users()
+
+
+def page_users_nai() -> None:
+    st.markdown("#### NAI / TTS — ユーザー管理")
+    st.caption("社内 AI アシスタント (NAI) と TTS のログインアカウントを管理します。")
 
     flash = st.session_state.pop("user_flash", None)
     if flash:

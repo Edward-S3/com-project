@@ -13,7 +13,7 @@ from access_log_store import (
 )
 
 load_dotenv()
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "nakaboshi2024")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "nakaboshi_admin0123")
 
 st.set_page_config(page_title="FAQボット アクセス履歴", page_icon="📊", layout="wide")
 init_access_log()

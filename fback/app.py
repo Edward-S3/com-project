@@ -3,6 +3,7 @@ import streamlit.components.v1 as components
 import sqlite3
 import json
 import os
+import sys
 import re
 import hashlib
 import secrets
@@ -20,10 +21,16 @@ from fpdf import FPDF
 import tempfile
 import pandas as pd
 
+_SHARED_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "shared"))
+if _SHARED_ROOT not in sys.path:
+    sys.path.insert(0, _SHARED_ROOT)
+from user_admin import render_fback_users
+
 # .env: Gemini（fback）+ SMTP（exam と共通）
 load_dotenv()
 load_dotenv("/opt/exam/.env")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "nakaboshi_admin0123")
 FBACK_HOST = os.getenv("FBACK_HOST", "172.16.16.10")
 FBACK_PORT = os.getenv("FBACK_PORT", "8503")
 if GEMINI_API_KEY:
@@ -292,7 +299,7 @@ def init_db():
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         c.execute(
             "INSERT INTO users (username, password, company_name, role, created_at) VALUES (?, ?, ?, ?, ?)",
-            ('admin', hash_password('admin123'), 'システム管理部', 'admin', now),
+            ('admin', hash_password(ADMIN_PASSWORD), 'システム管理部', 'admin', now),
         )
         c.execute(
             "INSERT INTO users (username, password, company_name, role, created_at) VALUES (?, ?, ?, ?, ?)",
@@ -605,159 +612,7 @@ def render_profile_settings():
 
 def render_user_management():
     st.title("👥 ユーザー登録・管理")
-    st.write("アンケート作成者アカウントの登録、編集、削除を行います。ログインIDにはメールアドレスを使用します。")
-    if is_smtp_configured():
-        st.success(f"メール送信: 有効（管理画面URL: {get_admin_portal_url()}）")
-    else:
-        st.warning(
-            "メール送信: 無効（/opt/exam/.env の SMTP_SERVER / SMTP_USER / SMTP_PASSWORD / EMAIL_FROM を確認してください）"
-        )
-
-    with st.form("register_user_form"):
-        new_email = st.text_input("ユーザーID（メールアドレス）", placeholder="例: user@example.com")
-        new_company = st.text_input("所属名・組織名", placeholder="例: 東京支社")
-        new_password = st.text_input("ログインパスワード", type="password")
-        send_mail_on_register = st.checkbox("登録完了メールを送信する", value=True)
-        if st.form_submit_button("ユーザーを登録する"):
-            new_email_norm = normalize_email(new_email)
-            if not (new_email and new_company and new_password):
-                st.error("すべての項目を入力してください。")
-            elif not is_valid_email(new_email):
-                st.error("ユーザーIDには有効なメールアドレスを入力してください。")
-            else:
-                conn = get_db_connection()
-                c = conn.cursor()
-                try:
-                    c.execute(
-                        "INSERT INTO users (username, password, company_name, role, created_at) VALUES (?, ?, ?, ?, ?)",
-                        (
-                            new_email_norm,
-                            hash_password(new_password),
-                            new_company,
-                            'creator',
-                            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                        ),
-                    )
-                    conn.commit()
-                    st.success(f"ユーザー「{new_email_norm}」を登録しました。")
-                    if send_mail_on_register:
-                        ok, mail_msg = send_user_registration_email(
-                            new_email_norm, new_password, new_company
-                        )
-                        if ok:
-                            st.info(mail_msg)
-                        else:
-                            st.warning(mail_msg)
-                except sqlite3.IntegrityError:
-                    st.error("そのメールアドレスは既に登録されています。")
-                finally:
-                    conn.close()
-    st.divider()
-    st.subheader("登録済みユーザー一覧（自分以外）")
-    conn = get_db_connection()
-    c = conn.cursor()
-    c.execute(
-        "SELECT id, username, company_name, role, created_at FROM users WHERE id != ? ORDER BY id DESC",
-        (st.session_state.user_id,),
-    )
-    users = c.fetchall()
-    conn.close()
-    if not users:
-        st.info("登録済みのユーザーはいません。")
-        return
-    st.dataframe(
-        pd.DataFrame(users, columns=["DB ID", "メールアドレス", "所属", "権限", "登録日時"]),
-        use_container_width=True,
-    )
-
-    st.subheader("📧 登録完了メールの再送信")
-    st.caption(
-        "メールに記載するパスワードを入力して再送信します。"
-        "空欄の場合は新しいパスワードを自動生成し、DBのパスワードも更新します。"
-    )
-    mail_user_options = {f"{u[1]} ({u[2]})": u for u in users}
-    mail_sel_label = st.selectbox("再送信先ユーザー", list(mail_user_options.keys()), key="resend_mail_user_sel")
-    mail_sel = mail_user_options[mail_sel_label]
-    mail_sel_id, mail_sel_email, mail_sel_company, _, _ = mail_sel
-    resend_password = st.text_input(
-        "メールに記載するログインパスワード（空欄で自動再発行）",
-        type="password",
-        key="resend_mail_password",
-    )
-    if st.button("📧 登録完了メールを再送信", key="resend_mail_btn"):
-        password_for_mail = resend_password.strip()
-        if not password_for_mail:
-            password_for_mail = generate_random_password()
-            st.info("新しいパスワードを自動生成し、アカウントに反映しました。")
-        conn = get_db_connection()
-        c = conn.cursor()
-        c.execute(
-            "UPDATE users SET password = ? WHERE id = ?",
-            (hash_password(password_for_mail), mail_sel_id),
-        )
-        conn.commit()
-        conn.close()
-        ok, mail_msg = send_user_registration_email(
-            mail_sel_email, password_for_mail, mail_sel_company
-        )
-        if ok:
-            st.success(mail_msg)
-        else:
-            st.error(mail_msg)
-
-    st.divider()
-    st.subheader("ユーザー編集・削除")
-    user_options = {f"{u[1]} ({u[2]} - {u[3]})": u for u in users}
-    selected_label = st.selectbox("編集するユーザー", list(user_options.keys()))
-    sel = user_options[selected_label]
-    sel_id, sel_username, sel_company, sel_role, _ = sel
-    with st.form("edit_user_form"):
-        edit_company = st.text_input("所属名・組織名", value=sel_company)
-        edit_role = st.selectbox(
-            "アカウント権限",
-            ["一般作成者 (creator)", "システム管理者 (admin)"],
-            index=0 if sel_role == 'creator' else 1,
-        )
-        edit_password = st.text_input("新しいパスワード（変更する場合のみ）", type="password")
-        if st.form_submit_button("変更を保存する", type="primary"):
-            if not edit_company:
-                st.error("所属名は空欄にできません。")
-            else:
-                role_val = 'creator' if edit_role.startswith("一般") else 'admin'
-                conn = get_db_connection()
-                c = conn.cursor()
-                try:
-                    if edit_password:
-                        c.execute(
-                            "UPDATE users SET company_name = ?, role = ?, password = ? WHERE id = ?",
-                            (edit_company, role_val, hash_password(edit_password), sel_id),
-                        )
-                    else:
-                        c.execute(
-                            "UPDATE users SET company_name = ?, role = ? WHERE id = ?",
-                            (edit_company, role_val, sel_id),
-                        )
-                    conn.commit()
-                    st.success("ユーザー情報を更新しました。")
-                    st.rerun()
-                except Exception as e:
-                    st.error(f"更新エラー: {e}")
-                finally:
-                    conn.close()
-    with st.expander("⚠️ このユーザーを削除する"):
-        confirm_delete = st.checkbox(f"「{sel_username}」の削除を承諾します")
-        if st.button("ユーザーを削除する", type="primary"):
-            if confirm_delete:
-                conn = get_db_connection()
-                c = conn.cursor()
-                c.execute("DELETE FROM survey_editors WHERE user_id = ? OR granted_by = ?", (sel_id, sel_id))
-                c.execute("DELETE FROM users WHERE id = ?", (sel_id,))
-                conn.commit()
-                conn.close()
-                st.success(f"ユーザー「{sel_username}」を削除しました。")
-                st.rerun()
-            else:
-                st.error("確認チェックボックスをオンにしてください。")
+    render_fback_users(exclude_user_id=st.session_state.user_id)
 
 def render_survey_editor_permissions(survey_id):
     """アンケートオーナーのみ：他ユーザーへの編集・分析権限付与。"""

@@ -3,6 +3,7 @@ import streamlit.components.v1 as components
 import sqlite3
 import json
 import os
+import sys
 import hashlib
 from datetime import datetime
 import uuid
@@ -17,6 +18,11 @@ import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 import pandas as pd
 from dotenv import load_dotenv
+
+_SHARED_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "shared"))
+if _SHARED_ROOT not in sys.path:
+    sys.path.insert(0, _SHARED_ROOT)
+from user_admin import render_exam_users
 
 # google.generativeai の安全なインポート
 try:
@@ -37,6 +43,7 @@ except ModuleNotFoundError:
 # --- 1. 環境設定と初期化 ---
 load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "nakaboshi_admin0123")
 if GEMINI_API_KEY and HAS_GEMINI and genai:
     genai.configure(api_key=GEMINI_API_KEY)
 
@@ -148,10 +155,10 @@ def init_db():
     c.execute("SELECT COUNT(*) FROM users")
     if c.fetchone()[0] == 0:
         now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        # 管理者 (admin / admin123)
+        # 管理者 (admin / ADMIN_PASSWORD)
         c.execute(
             "INSERT INTO users (username, password, company_name, role, created_at) VALUES (?, ?, ?, ?, ?)",
-            ('admin', hash_password('admin123'), 'システム管理部', 'admin', now)
+            ('admin', hash_password(ADMIN_PASSWORD), 'システム管理部', 'admin', now)
         )
         # 問題作成者 (creator1 / creator123)
         c.execute(
@@ -3329,121 +3336,7 @@ def render_admin_dashboard():
     # 1. ユーザー（他者）の登録と管理
     if menu == "ユーザー(他者)の登録と管理":
         st.title("👥 新規問題作成ユーザー（他者）の登録")
-        st.write("他部署や外部パートナー（他者）などの問題作成ユーザーをシステムに登録します。")
-        
-        with st.form("register_user_form"):
-            new_username = st.text_input("ログインID（ユーザー名）", placeholder="例: user_tokyo")
-            new_company = st.text_input("所属名・組織名（他者識別用）", placeholder="例: 東京支社開発チーム")
-            new_password = st.text_input("パスワード", type="password")
-            
-            submit = st.form_submit_button("ユーザーを登録する")
-            
-            if submit:
-                if not (new_username and new_company and new_password):
-                    st.error("すべての項目を入力してください。")
-                else:
-                    conn = get_db_connection()
-                    c = conn.cursor()
-                    try:
-                        c.execute(
-                            "INSERT INTO users (username, password, company_name, role, created_at) VALUES (?, ?, ?, ?, ?)",
-                            (new_username, hash_password(new_password), new_company, 'creator', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-                        )
-                        conn.commit()
-                        st.success(f"他者ユーザー「{new_username} ({new_company})」を正常に登録しました！")
-                    except sqlite3.IntegrityError:
-                        st.error("そのログインIDは既に使用されています。")
-                    finally:
-                        conn.close()
-                        
-        st.markdown("<hr>", unsafe_allow_html=True)
-        st.subheader("登録済みユーザー一覧 (自分自身を除く)")
-        conn = get_db_connection()
-        c = conn.cursor()
-        c.execute("SELECT id, username, company_name, role, created_at FROM users WHERE id != ? ORDER BY id DESC", (st.session_state.user_id,))
-        creators = c.fetchall()
-        conn.close()
-        
-        if creators:
-            df = pd.DataFrame(creators, columns=["ユーザーID", "ログインID", "所属名・組織名", "権限（ロール）", "登録日時"])
-            st.dataframe(df, use_container_width=True)
-            
-            # 登録済みユーザーの編集・管理者権限付与・削除
-            st.markdown("<hr>", unsafe_allow_html=True)
-            st.subheader("👥 登録済みユーザーの編集・管理者権限の付与・削除")
-            st.write("自分以外の登録ユーザーの「所属名」「パスワード」の変更、および「管理者権限の付与（ロール変更）」、アカウントの削除を行えます。")
-            
-            # セレクトボックスで編集対象ユーザーを選択
-            creator_options = {f"{c_rec[1]} ({c_rec[2]} - {c_rec[3]})": c_rec for c_rec in creators}
-            selected_creator_label = st.selectbox("編集または削除するユーザーを選択してください", list(creator_options.keys()))
-            selected_creator = creator_options[selected_creator_label]
-            
-            sel_id, sel_username, sel_company, sel_role, sel_created = selected_creator
-            
-            with st.form("edit_user_form"):
-                st.write(f"ユーザーID: **{sel_id}** | ログインID: **{sel_username}**")
-                edit_company = st.text_input("所属名・組織名（編集）", value=sel_company)
-                
-                # ロール（権限）の変更機能を追加
-                role_index = 0 if sel_role == 'creator' else 1
-                edit_role = st.selectbox("アカウント権限 (管理者権限の付与など)", ["一般問題作成者 (creator)", "システム管理者 (admin)"], index=role_index)
-                
-                edit_password = st.text_input("新しいパスワード（変更する場合のみ入力）", type="password")
-                
-                save_btn = st.form_submit_button("変更を保存する", type="primary")
-                    
-                if save_btn:
-                    if not edit_company:
-                        st.error("所属名は空欄にできません。")
-                    else:
-                        conn = get_db_connection()
-                        c = conn.cursor()
-                        try:
-                            # 権限の値を選択
-                            role_val = 'creator' if edit_role == "一般問題作成者 (creator)" else 'admin'
-                            
-                            if edit_password:
-                                c.execute(
-                                    "UPDATE users SET company_name = ?, role = ?, password = ? WHERE id = ?",
-                                    (edit_company, role_val, hash_password(edit_password), sel_id)
-                                )
-                            else:
-                                c.execute(
-                                    "UPDATE users SET company_name = ?, role = ? WHERE id = ?",
-                                    (edit_company, role_val, sel_id)
-                                )
-                            conn.commit()
-                            st.success(f"ユーザー「{sel_username}」の情報を正常に更新しました！")
-                            st.toast("ユーザー情報を更新しました。")
-                            st.rerun()
-                        except Exception as e:
-                            st.error(f"更新エラー: {e}")
-                        finally:
-                            conn.close()
-            
-            # 安全確認付き削除フォーム
-            with st.expander("⚠️ このユーザーを削除する"):
-                st.warning(f"ユーザー「{sel_username}」をシステムから完全に削除します。このユーザーが作成した試験データ等はそのまま残りますが、ログインできなくなります。")
-                confirm_delete = st.checkbox(f"「{sel_username}」の削除を承諾します", key="confirm_delete_user")
-                
-                if st.button("🚨 ユーザーを削除する", type="primary"):
-                    if confirm_delete:
-                        conn = get_db_connection()
-                        c = conn.cursor()
-                        try:
-                            c.execute("DELETE FROM users WHERE id = ?", (sel_id,))
-                            conn.commit()
-                            st.success(f"ユーザー「{sel_username}」を削除しました。")
-                            st.toast("ユーザーを削除しました。")
-                            st.rerun()
-                        except Exception as e:
-                            st.error(f"削除エラー: {e}")
-                        finally:
-                            conn.close()
-                    else:
-                        st.error("確認チェックボックスをオンにしてください。")
-        else:
-            st.info("登録済みのユーザーはいません。")
+        render_exam_users(exclude_user_id=st.session_state.user_id)
 
     # 2. すべての試験問題管理
     elif menu == "すべての試験問題管理":
