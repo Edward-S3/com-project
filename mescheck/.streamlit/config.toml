@@ -1,0 +1,8 @@
+[server]
+headless = true
+port = 8511
+address = "0.0.0.0"
+maxUploadSize = 10
+
+[browser]
+gatherUsageStats = false

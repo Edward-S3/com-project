@@ -205,6 +205,7 @@
     .card-nai      { --card-color1: #0d9ddb33; }
     .card-naictrl  { --card-color1: #bf870033; }
     .card-tts      { --card-color1: #8250df33; }
+    .card-mescheck { --card-color1: #0969da33; }
 
     .icon-faq  { background: linear-gradient(135deg, #1f6feb, #388bfd); box-shadow: 0 0 14px #1f6feb44; }
     .icon-eval { background: linear-gradient(135deg, #238636, #3fb950); box-shadow: 0 0 14px #23863644; }
@@ -213,6 +214,7 @@
     .icon-nai      { background: linear-gradient(135deg, #0d9ddb, #00d4ff); box-shadow: 0 0 14px #0d9ddb44; }
     .icon-naictrl  { background: linear-gradient(135deg, #bf8700, #d4a72c); box-shadow: 0 0 14px #bf870044; }
     .icon-tts      { background: linear-gradient(135deg, #8250df, #a475f9); box-shadow: 0 0 14px #8250df44; }
+    .icon-mescheck { background: linear-gradient(135deg, #0969da, #54aeff); box-shadow: 0 0 14px #0969da44; }
 
     /* ── 管理者向けサーバー状況 ── */
     .admin-panel-wrap {
@@ -584,6 +586,15 @@
       icon: "🔊",
       iconClass: "icon-tts",
       cardClass: "card-tts",
+    },
+    {
+      path: "/mescheck/",
+      title: "メッセージ確認",
+      subtitle: "MesCheck — Outlook / Teams",
+      desc: "Microsoft 365 アカウントでサインインし、未読の Outlook メールと Teams チャット・Team 投稿を一覧表示します。",
+      icon: "📬",
+      iconClass: "icon-mescheck",
+      cardClass: "card-mescheck",
     },
   ];
 
