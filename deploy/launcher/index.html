@@ -206,6 +206,10 @@
     .card-naictrl  { --card-color1: #bf870033; }
     .card-tts      { --card-color1: #8250df33; }
     .card-mescheck { --card-color1: #0969da33; }
+    .card-pptx     { --card-color1: #e3620933; }
+    .card-pptxan   { --card-color1: #cc785c33; }
+    .card-img2pptx { --card-color1: #1a7f4b33; }
+    .card-pptx2    { --card-color1: #6e40c933; }
 
     .icon-faq  { background: linear-gradient(135deg, #1f6feb, #388bfd); box-shadow: 0 0 14px #1f6feb44; }
     .icon-eval { background: linear-gradient(135deg, #238636, #3fb950); box-shadow: 0 0 14px #23863644; }
@@ -215,6 +219,10 @@
     .icon-naictrl  { background: linear-gradient(135deg, #bf8700, #d4a72c); box-shadow: 0 0 14px #bf870044; }
     .icon-tts      { background: linear-gradient(135deg, #8250df, #a475f9); box-shadow: 0 0 14px #8250df44; }
     .icon-mescheck { background: linear-gradient(135deg, #0969da, #54aeff); box-shadow: 0 0 14px #0969da44; }
+    .icon-pptx     { background: linear-gradient(135deg, #e36209, #f0883e); box-shadow: 0 0 14px #e3620944; }
+    .icon-pptxan   { background: linear-gradient(135deg, #cc785c, #e8a87c); box-shadow: 0 0 14px #cc785c44; }
+    .icon-img2pptx { background: linear-gradient(135deg, #1a7f4b, #3fb950); box-shadow: 0 0 14px #1a7f4b44; }
+    .icon-pptx2    { background: linear-gradient(135deg, #6e40c9, #a371f7); box-shadow: 0 0 14px #6e40c944; }
 
     /* ── 管理者向けサーバー状況 ── */
     .admin-panel-wrap {
@@ -595,6 +603,42 @@
       icon: "📬",
       iconClass: "icon-mescheck",
       cardClass: "card-mescheck",
+    },
+    {
+      path: "/pptx/",
+      title: "PPTX 自動生成",
+      subtitle: "AI Presentation Generator (Gemini)",
+      desc: "PDF・Word・Excel 等のソース資料と利用目的から、Gemini AI がスライド構成を設計し、編集可能な PowerPoint ファイルを自動生成します。",
+      icon: "📊",
+      iconClass: "icon-pptx",
+      cardClass: "card-pptx",
+    },
+    {
+      path: "/pptx-an/",
+      title: "PPTX 自動生成 (Claude)",
+      subtitle: "AI Presentation Generator (Anthropic)",
+      desc: "PDF・Word・Excel 等のソース資料と利用目的から、Claude AI がスライド構成を設計し、編集可能な PowerPoint ファイルを自動生成します。",
+      icon: "📑",
+      iconClass: "icon-pptxan",
+      cardClass: "card-pptxan",
+    },
+    {
+      path: "/img2pptx/",
+      title: "画像PPTX → 編集可能PPTX",
+      subtitle: "NotebookLM Slide Converter",
+      desc: "NotebookLM が出力した画像埋め込み型 PPTX を Gemini OCR で解析し、テキスト・画像を分離した編集可能な PowerPoint に変換します。",
+      icon: "🖼️",
+      iconClass: "icon-img2pptx",
+      cardClass: "card-img2pptx",
+    },
+    {
+      path: "/pptx2/",
+      title: "PPTX マルチLLM生成",
+      subtitle: "Multi-LLM Slide Orchestrator",
+      desc: "文書・音声・動画・YouTube・Web 等の複数ソースから、工程ごとに最適な LLM を自動選択して PowerPoint 資料を生成します。コスト見積もり・QA 検証付き。",
+      icon: "🎯",
+      iconClass: "icon-pptx2",
+      cardClass: "card-pptx2",
     },
   ];
 

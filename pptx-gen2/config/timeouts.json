@@ -1,0 +1,14 @@
+{
+  "text_llm_sec": 120,
+  "audio_understanding_multiplier": 4,
+  "audio_understanding_max_sec": 600,
+  "video_understanding_multiplier": 5,
+  "video_understanding_max_sec": 900,
+  "web_fetch_sec": 30,
+  "layout_generation_sec": 30,
+  "layout_execution_sec": 5,
+  "qa_per_round_sec": 60,
+  "pipeline_total_sec": 1800,
+  "ui_poll_interval_sec": 1.5,
+  "watchdog_stale_sec": 30
+}

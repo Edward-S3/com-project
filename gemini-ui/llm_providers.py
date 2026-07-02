@@ -483,6 +483,11 @@ def _ollama_base_url() -> str:
     return os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434").rstrip("/")
 
 
+def _ollama_use_stream() -> bool:
+    """OLLAMA_USE_STREAM=0 で非ストリーミング（Windows + requests 相性問題の回避用）"""
+    return os.getenv("OLLAMA_USE_STREAM", "1").strip().lower() not in ("0", "false", "no")
+
+
 def _fetch_ollama_installed() -> list[str]:
     now = time.time()
     if now - float(_ollama_cache["ts"]) < _OLLAMA_CACHE_TTL:
@@ -678,7 +683,7 @@ def _ollama_chat(model: str, messages: list[dict], temperature: float = 0.1) -> 
         f"{_ollama_base_url()}/api/chat",
         json={"model": model, "messages": messages, "stream": False,
               "options": {"temperature": temperature}},
-        timeout=60,
+        timeout=(10, 180),
     )
     resp.raise_for_status()
     return resp.json().get("message", {}).get("content", "")
@@ -1195,15 +1200,23 @@ def _stream_ollama(
         user_msg["images"] = ollama_images
     messages.append(user_msg)
 
+    if not _ollama_use_stream():
+        full_text = _ollama_chat(ollama_model, messages, temperature)
+        if full_text:
+            yield full_text
+        yield ("__meta__", full_text, len(user_text) // 4, len(full_text) // 4)
+        return
+
     resp = requests.post(
         f"{base}/api/chat",
         json={"model": ollama_model, "messages": messages, "stream": True,
               "options": {"temperature": temperature}},
-        stream=True, timeout=300,
+        stream=True,
+        timeout=(10, 300),
     )
     resp.raise_for_status()
     full_text = ""
-    for line in resp.iter_lines():
+    for line in resp.iter_lines(decode_unicode=True):
         if not line:
             continue
         data = json.loads(line)
@@ -1213,7 +1226,6 @@ def _stream_ollama(
             yield chunk
         if data.get("done"):
             break
-    # Ollama はトークン数を返さない場合がある
     yield ("__meta__", full_text, len(user_text) // 4, len(full_text) // 4)
 
 

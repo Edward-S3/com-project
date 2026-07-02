@@ -20,6 +20,13 @@ logs/
 tmp/
 chroma_db/
 chat_history.db
+pptx-gen/output/
+pptx-gen-an/output/
+pptx-gen2/outputs/
+pptx-gen2/temp_uploads/
+img2pptx/temp/
+img2pptx/output/*.pptx
+!img2pptx/output/.gitkeep
 
 # IDE / AI tooling
 .claude/

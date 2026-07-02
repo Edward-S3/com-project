@@ -1,0 +1,45 @@
+{
+  "scenarios": [
+    {
+      "id": "full",
+      "label": "費用度外視",
+      "description": "現行設定のまま(自由生成モード+QA最大5回+指定/推奨枚数)",
+      "qa_max_rounds": 5,
+      "use_template_only": false,
+      "compress_slides": false
+    },
+    {
+      "id": "fewer_slides",
+      "label": "枚数を抑える",
+      "description": "スライド枚数を範囲の下限値まで圧縮",
+      "qa_max_rounds": 5,
+      "use_template_only": false,
+      "compress_slides": true
+    },
+    {
+      "id": "qa_once",
+      "label": "デザイン確認を1回に制限",
+      "description": "QA検証を最大5回→1回に制限",
+      "qa_max_rounds": 1,
+      "use_template_only": false,
+      "compress_slides": false
+    },
+    {
+      "id": "template_only",
+      "label": "レイアウトをテンプレート固定",
+      "description": "自由生成モードをオフにし、テンプレート関数のみ使用",
+      "qa_max_rounds": 5,
+      "use_template_only": true,
+      "compress_slides": false
+    },
+    {
+      "id": "cheapest",
+      "label": "最安構成",
+      "description": "上記の制限を全て組み合わせ",
+      "qa_max_rounds": 1,
+      "use_template_only": true,
+      "compress_slides": true
+    }
+  ],
+  "budget_lever_priority": ["reduce_qa", "compress_slides", "template_only"]
+}

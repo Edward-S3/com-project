@@ -1,0 +1,17 @@
+{
+  "_comment": "工程別デフォルトモデル。auto の場合はプロバイダ解決後に MODEL_NAMES を使用。",
+  "gemini": "gemini-3.5-flash",
+  "gemini_pro": "gemini-3.1-pro-preview",
+  "claude": "claude-sonnet-4-20250514",
+  "gpt4o": "gpt-4o",
+  "grok": "grok-2-latest",
+  "task_defaults": {
+    "content_synthesis": "auto",
+    "slide_structure_planning": "auto",
+    "structured_json_payload": "auto",
+    "japanese_narrative": "auto",
+    "slide_layout_code_generation": "auto",
+    "design_visual_qa": "auto",
+    "audio_video_understanding": "auto"
+  }
+}

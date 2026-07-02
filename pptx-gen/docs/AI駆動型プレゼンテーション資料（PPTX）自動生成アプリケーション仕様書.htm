@@ -1,0 +1,2331 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=shift_jis">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 15">
+<meta name=Originator content="Microsoft Word 15">
+<link rel=File-List
+href="AI駆動型プレゼンテーション資料（PPTX）自動生成アプリケーション仕様書.files/filelist.xml">
+<link rel=Edit-Time-Data
+href="AI駆動型プレゼンテーション資料（PPTX）自動生成アプリケーション仕様書.files/editdata.mso">
+<link rel=themeData
+href="AI駆動型プレゼンテーション資料（PPTX）自動生成アプリケーション仕様書.files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="AI駆動型プレゼンテーション資料（PPTX）自動生成アプリケーション仕様書.files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:EmbedTrueTypeFonts/>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:TrackMoves/>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>JA</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>
+   <w:OverrideTableStyleHps/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:DoNotOptimizeForBrowser/>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="376">
+  <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 9"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="header"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footer"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index heading"/>
+  <w:LsdException Locked="false" Priority="35" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of figures"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope return"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="line number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="page number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of authorities"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="macro"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="toa heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 5"/>
+  <w:LsdException Locked="false" Priority="10" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Closing"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Signature"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Message Header"/>
+  <w:LsdException Locked="false" Priority="11" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Salutation"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Date"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Note Heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Block Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="FollowedHyperlink"/>
+  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Document Map"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Plain Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="E-mail Signature"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Top of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Bottom of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal (Web)"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Acronym"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Cite"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Code"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Definition"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Keyboard"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Preformatted"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Sample"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Typewriter"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Variable"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Table"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation subject"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="No List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Contemporary"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Elegant"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Professional"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Balloon Text"/>
+  <w:LsdException Locked="false" Priority="39" Name="Table Grid"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Theme"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+  <w:LsdException Locked="false" Priority="41" Name="Plain Table 1"/>
+  <w:LsdException Locked="false" Priority="42" Name="Plain Table 2"/>
+  <w:LsdException Locked="false" Priority="43" Name="Plain Table 3"/>
+  <w:LsdException Locked="false" Priority="44" Name="Plain Table 4"/>
+  <w:LsdException Locked="false" Priority="45" Name="Plain Table 5"/>
+  <w:LsdException Locked="false" Priority="40" Name="Grid Table Light"/>
+  <w:LsdException Locked="false" Priority="46" Name="Grid Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="Grid Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="Grid Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="46" Name="List Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="List Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hashtag"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Unresolved Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Link"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;
+	mso-font-alt:"MS Mincho";
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-pitch:fixed;
+	mso-font-signature:-536870145 1791491579 134217746 0 131231 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536869121 1107305727 33554432 0 415 0;
+	mso-font-src:1;}
+@font-face
+	{font-family:"Arial Unicode MS";
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-alt:Arial;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:auto;
+	mso-font-signature:0 0 0 0 0 0;
+	mso-font-src:2;}
+@font-face
+	{font-family:Georgia;
+	panose-1:2 4 5 2 5 4 5 2 3 3;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;
+	mso-font-src:3;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-536869121 64767 1 0 415 0;
+	mso-font-src:4;}
+@font-face
+	{font-family:"\@ＭＳ 明朝";
+	panose-1:2 2 6 9 4 2 5 8 3 4;
+	mso-font-charset:128;
+	mso-generic-font-family:roman;
+	mso-font-pitch:fixed;
+	mso-font-signature:-536870145 1791491579 134217746 0 131231 0;
+	mso-font-src:5;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0mm;
+	mso-pagination:none;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:標準;
+	margin-top:12.0pt;
+	margin-right:0mm;
+	margin-bottom:12.0pt;
+	margin-left:0mm;
+	mso-pagination:none;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Arial",sans-serif;
+	mso-font-kerning:0pt;}
+h2
+	{mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-next:標準;
+	margin-top:11.25pt;
+	margin-right:0mm;
+	margin-bottom:11.25pt;
+	margin-left:0mm;
+	mso-pagination:none;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Arial",sans-serif;}
+h3
+	{mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-next:標準;
+	margin-top:12.0pt;
+	margin-right:0mm;
+	margin-bottom:12.0pt;
+	margin-left:0mm;
+	mso-pagination:none;
+	mso-outline-level:3;
+	font-size:14.0pt;
+	font-family:"Arial",sans-serif;}
+h4
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-next:標準;
+	margin-top:12.75pt;
+	margin-right:0mm;
+	margin-bottom:12.75pt;
+	margin-left:0mm;
+	mso-pagination:none;
+	mso-outline-level:4;
+	font-size:12.0pt;
+	font-family:"Arial",sans-serif;}
+h5
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-next:標準;
+	margin-top:12.75pt;
+	margin-right:0mm;
+	margin-bottom:12.75pt;
+	margin-left:0mm;
+	mso-pagination:none;
+	mso-outline-level:5;
+	font-size:9.0pt;
+	font-family:"Arial",sans-serif;}
+h6
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-next:標準;
+	margin-top:18.0pt;
+	margin-right:0mm;
+	margin-bottom:18.0pt;
+	margin-left:0mm;
+	mso-pagination:none;
+	mso-outline-level:6;
+	font-size:8.0pt;
+	font-family:"Arial",sans-serif;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:標準;
+	margin-top:24.0pt;
+	margin-right:0mm;
+	margin-bottom:6.0pt;
+	margin-left:0mm;
+	mso-pagination:lines-together;
+	page-break-after:avoid;
+	font-size:36.0pt;
+	font-family:"Arial",sans-serif;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-next:標準;
+	margin-top:18.0pt;
+	margin-right:0mm;
+	margin-bottom:4.0pt;
+	margin-left:0mm;
+	mso-pagination:lines-together;
+	page-break-after:avoid;
+	font-size:24.0pt;
+	font-family:"Georgia",serif;
+	mso-fareast-font-family:Georgia;
+	mso-bidi-font-family:Georgia;
+	color:#666666;
+	font-style:italic;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:11.0pt;
+	mso-ansi-font-size:11.0pt;
+	font-family:"Arial",sans-serif;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	mso-font-kerning:0pt;
+	mso-ligatures:none;}
+.MsoPapDefault
+	{mso-style-type:export-only;
+	mso-pagination:none;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;
+	mso-header-margin:0mm;
+	mso-footer-margin:36.0pt;
+	mso-page-numbers:1;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:1070542583;
+	mso-list-template-ids:-469189072;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:●;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:30.0pt;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:○;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:60.0pt;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1
+	{mso-list-id:1114668938;
+	mso-list-template-ids:839431230;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:●;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:30.0pt;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:○;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2
+	{mso-list-id:1184902311;
+	mso-list-template-ids:-1622358516;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:●;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:30.0pt;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:○;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:60.0pt;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+@list l2:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:■;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:11.0pt;
+	mso-bidi-font-size:11.0pt;
+	mso-ascii-font-family:Arial;
+	mso-fareast-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	font-variant:normal !important;
+	color:black;
+	mso-ansi-font-weight:normal;
+	mso-bidi-font-weight:normal;
+	mso-ansi-font-style:normal;
+	mso-bidi-font-style:normal;
+	text-decoration:none;
+	text-underline:none;
+	text-decoration:none;
+	text-line-through:none;
+	vertical-align:baseline;}
+ol
+	{margin-bottom:0mm;}
+ul
+	{margin-bottom:0mm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:標準の表;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0mm 5.4pt 0mm 5.4pt;
+	mso-para-margin:0mm;
+	mso-pagination:none;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;}
+table.TableNormal
+	{mso-style-name:TableNormal;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	mso-padding-alt:5.0pt 5.0pt 5.0pt 5.0pt;
+	mso-para-margin:0mm;
+	mso-pagination:none;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;}
+table.a
+	{mso-style-name:"";
+	mso-tstyle-rowband-size:1;
+	mso-tstyle-colband-size:1;
+	mso-style-unhide:no;
+	mso-style-parent:TableNormal;
+	mso-padding-alt:5.0pt 5.0pt 5.0pt 5.0pt;
+	mso-para-margin:0mm;
+	mso-pagination:none;
+	font-size:11.0pt;
+	font-family:"Arial",sans-serif;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026">
+  <v:textbox inset="5.85pt,.7pt,5.85pt,.7pt"/>
+ </o:shapedefaults></xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=JA style='tab-interval:36.0pt;word-wrap:break-word'>
+
+<div class=WordSection1>
+
+<h1><span lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>AI</span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>駆動型プレゼンテーション資料（<span lang=EN-US>PPTX</span>）自動生成アプリケーション仕様書</span></h1>
+
+<p class=MsoNormal style='margin-bottom:11.25pt;line-height:125%;border:none;
+mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>本書は、ユーザーがアップロードした多様なソースドキュメントと利用目的（プロンプト）を元に、<span
+lang=EN-US>LLM</span>（<span lang=EN-US>Gemini API</span>）および画像生成<span
+lang=EN-US>API</span>を活用して、編集可能な<span lang=EN-US>PowerPoint</span>ファイル（<span
+lang=EN-US>.pptx</span>）を自動生成するアプリケーションの完全な仕様書である。本仕様書は<span lang=EN-US>Cursor</span>等の<span
+lang=EN-US>AI</span>エディタに読み込ませて直接開発を開始できるレベルの具体性を備えている。</span></p>
+
+<h2 style='margin-top:0mm'><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>1.
+</span><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>システム概要</span></h2>
+
+<p class=MsoNormal style='margin-bottom:11.25pt;line-height:125%;border:none;
+mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>本システムは、ユーザーから提供された入力ファイル（<span
+lang=EN-US>PDF</span>、テキスト、<span lang=EN-US>Markdown</span>、<span lang=EN-US>Word</span>、<span
+lang=EN-US>Excel</span>、<span lang=EN-US>PowerPoint</span>）の内容を解析・抽出し、ユーザーが指定したシチュエーションや目的に応じたスライド構成を<span
+lang=EN-US>AI</span>によって自動構築する。さらに、スライドごとのデザインテーマに沿ったアセット画像を生成し、最終的に<span
+lang=EN-US>python-pptx</span>ライブラリを用いて、ユーザーが後から再編集可能な<span lang=EN-US>PPTX</span>ファイルとして出力する<span
+lang=EN-US>Web</span>アプリケーションである。</span></p>
+
+<h2 style='margin-top:0mm'><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>2.
+</span><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>技術スタック</span></h2>
+
+<p class=MsoNormal style='line-height:125%;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>システムを構成する技術、ライブラリ、および<span
+lang=EN-US>AI</span>モデルは以下の通りである。</span></p>
+
+<table class=a border=1 cellspacing=0 cellpadding=0 width=624 style='border-collapse:
+ collapse;mso-table-layout-alt:fixed;border:none;mso-border-alt:solid black .75pt;
+ mso-yfti-tbllook:1536;mso-padding-alt:5.0pt 5.0pt 5.0pt 5.0pt;mso-border-insideh:
+ .75pt solid black;mso-border-insidev:.75pt solid black'>
+ <thead>
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+   <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+   mso-border-alt:solid black .75pt;background:#F2F2F2;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+   <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+   mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+   mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS";
+   color:black;mso-color-alt:windowtext'>区分</span><span lang=EN-US
+   style='font-size:10.0pt'><o:p></o:p></span></p>
+   </td>
+   <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+   border-left:none;mso-border-left-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+   background:#F2F2F2;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+   <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+   mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+   mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS";
+   color:black;mso-color-alt:windowtext'>技術<span lang=EN-US> / </span>ライブラリ<span
+   lang=EN-US> / </span>モデル</span><span lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+   </td>
+   <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+   border-left:none;mso-border-left-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+   background:#F2F2F2;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+   <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+   mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+   mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS";
+   color:black;mso-color-alt:windowtext'>用途・備考</span><span lang=EN-US
+   style='font-size:10.0pt'><o:p></o:p></span></p>
+   <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+   mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt;color:black;
+   mso-color-alt:windowtext'><span style='mso-spacerun:yes'>&nbsp;</span></span><span
+   lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='mso-yfti-irow:1'>
+  <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>基盤言語</span></b><b><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt'>Python 3.10+<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>システム全体の開発言語</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span lang=EN-US style='font-size:10.0pt;
+  font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+  mso-bidi-font-family:"Arial Unicode MS"'>UI / </span></b><b><span
+  style='font-size:10.0pt;font-family:"Arial Unicode MS";mso-fareast-font-family:
+  "Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>枠組み</span></b><b><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span class=SpellE><span lang=EN-US style='font-size:
+  10.0pt'>Streamlit</span></span><span lang=EN-US style='font-size:10.0pt'>
+  (&gt;=1.35.0)<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>高速な<span
+  lang=EN-US>Web UI</span>およびアプリケーション制御の構築</span><span lang=EN-US
+  style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span lang=EN-US style='font-size:10.0pt'>AI SDK<o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt'>Google GenAI
+  SDK (google-<span class=SpellE>genai</span>&gt;=0.1.1)<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+  "Arial Unicode MS"'>Gemini API</span><span style='font-size:10.0pt;
+  font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+  mso-bidi-font-family:"Arial Unicode MS"'>および<span lang=EN-US>Imagen</span>へのアクセスを標準化</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span lang=EN-US style='font-size:10.0pt;
+  font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+  mso-bidi-font-family:"Arial Unicode MS"'>LLM (</span></b><b><span
+  style='font-size:10.0pt;font-family:"Arial Unicode MS";mso-fareast-font-family:
+  "Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>テキスト<span
+  lang=EN-US>)</span></span></b><b><span lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt'>gemini-1.5-flash
+  / gemini-2.5-flash<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>ソース資料の読込、要約、スライドの基本構成案の構築（高速・安価・長文対応）</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span lang=EN-US style='font-size:10.0pt;
+  font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+  mso-bidi-font-family:"Arial Unicode MS"'>LLM (</span></b><b><span
+  style='font-size:10.0pt;font-family:"Arial Unicode MS";mso-fareast-font-family:
+  "Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>構造化<span
+  lang=EN-US>)</span></span></b><b><span lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt'>gemini-1.5-pro<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>構成案の詳細化、レイアウト・配色・画像プロンプト決定と<span
+  lang=EN-US>JSON</span>構造化出力</span><span lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>画像生成<span
+  lang=EN-US>AI</span></span></b><b><span lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt'>imagen-3.0-generate-002<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>スライド背景、挿絵、図解等のアセット画像生成（<span
+  lang=EN-US>Nano Banana/Imagen</span>シリーズ）</span><span lang=EN-US
+  style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>ファイル操作</span></b><b><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt'>python-pptx
+  (&gt;=0.6.23)<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+  "Arial Unicode MS"'>PowerPoint</span><span style='font-size:10.0pt;
+  font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+  mso-bidi-font-family:"Arial Unicode MS"'>（<span lang=EN-US>.pptx</span>）ファイルの動的生成およびオブジェクト配置</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td width=208 rowspan=4 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>データ抽出</span></b><b><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span class=SpellE><span lang=EN-US style='font-size:
+  10.0pt'>pypdf</span></span><span lang=EN-US style='font-size:10.0pt'>
+  (&gt;=4.0.0)<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+  "Arial Unicode MS"'>PDF</span><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>ファイルからのテキスト抽出</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>データ抽出</span></b>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'><span
+  lang=EN-US style='font-size:10.0pt'>python-docx (&gt;=1.1.0)<o:p></o:p></span></td>
+  </p>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+  "Arial Unicode MS"'>Word</span><span style='font-size:10.0pt;font-family:
+  "Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+  "Arial Unicode MS"'>ファイル（<span lang=EN-US>.docx</span>）からのテキスト抽出</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>データ抽出</span></b>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'><span
+  class=SpellE><span lang=EN-US style='font-size:10.0pt'>openpyxl</span></span><span
+  lang=EN-US style='font-size:10.0pt'> (&gt;=3.1.0)<o:p></o:p></span></td>
+  </p>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+  "Arial Unicode MS"'>Excel</span><span style='font-size:10.0pt;font-family:
+  "Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+  "Arial Unicode MS"'>ファイル（<span lang=EN-US>.xlsx</span>）からのテキスト・セルデータ抽出</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>データ抽出</span></b>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'><span
+  lang=EN-US style='font-size:10.0pt'>python-pptx<o:p></o:p></span></td>
+  </p>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>既存<span
+  lang=EN-US>PowerPoint</span>ファイル（<span lang=EN-US>.pptx</span>）からのテキスト抽出（読込用途も兼ねる）</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:12;mso-yfti-lastrow:yes'>
+  <td width=208 valign=top style='width:156.0pt;border:solid black 1.0pt;
+  border-top:none;mso-border-top-alt:solid black .75pt;mso-border-alt:solid black .75pt;
+  padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><b><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>環境管理</span></b><b><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></b></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt'>python-<span
+  class=SpellE>dotenv</span> (&gt;=1.0.1)<o:p></o:p></span></p>
+  </td>
+  <td width=208 valign=top style='width:156.0pt;border-top:none;border-left:
+  none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
+  mso-border-top-alt:solid black .75pt;mso-border-left-alt:solid black .75pt;
+  mso-border-alt:solid black .75pt;padding:4.5pt 4.5pt 4.5pt 4.5pt'>
+  <p class=MsoNormal style='border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+  mso-border-shadow:yes'><span lang=EN-US style='font-size:10.0pt;font-family:
+  "Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+  "Arial Unicode MS"'>API</span><span style='font-size:10.0pt;font-family:"Arial Unicode MS";
+  mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>キーなどの環境変数の安全な管理</span><span
+  lang=EN-US style='font-size:10.0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:11.25pt;border:none;mso-padding-alt:
+31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span lang=EN-US
+style='font-size:10.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<h2><span lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>3. </span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>ディレクトリ構成</span></h2>
+
+<p class=MsoNormal style='line-height:125%;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>Cursor</span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>でのプロジェクト開始時、または<span lang=EN-US>AI</span>による自動生成時に準拠すべき標準的なフォルダ構造を以下に定義する。</span></p>
+
+<p class=MsoNormal style='margin-top:7.5pt;margin-right:7.5pt;margin-bottom:
+18.75pt;margin-left:7.5pt;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span lang=EN-US style='font-size:9.0pt;font-family:
+Consolas;mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:black;mso-color-alt:windowtext;background:#F8F9FA'>ppt-generator-app/<br>
+│<br>
+├── .env<span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span># API</span><span style='font-size:9.0pt;font-family:Consolas;
+mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;color:black;
+mso-color-alt:windowtext;background:#F8F9FA'>キー、出力ディレクトリ等の環境変数<span lang=EN-US><br>
+├── requirements.txt<span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span># </span>依存外部ライブラリ一覧<span
+lang=EN-US><br>
+├── app.py<span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span># </span>メインの<span class=SpellE><span lang=EN-US>Streamlit</span></span>アプリケーション（<span
+lang=EN-US>UI</span>、全体制御フロー）<span lang=EN-US><br>
+│<br>
+├── <span class=SpellE>src</span>/<br>
+│<span style='mso-spacerun:yes'>&nbsp;&nbsp; </span>├── __init__.py<br>
+│<span style='mso-spacerun:yes'>&nbsp;&nbsp; </span>├── config.py<span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span># </span>各種定数、<span lang=EN-US>AI</span>モデル名定義、<span lang=EN-US>API</span>クライアントの初期化<span
+lang=EN-US><br>
+│<span style='mso-spacerun:yes'>&nbsp;&nbsp; </span>├── document_parser.py # </span>各種ファイル形式（<span
+lang=EN-US>PDF, DOCX, XLSX, PPTX, MD, TXT</span>）からのテキスト抽出ロジック<span lang=EN-US><br>
+│<span style='mso-spacerun:yes'>&nbsp;&nbsp; </span>├── schemas.py<span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span># <span
+class=SpellE>Pydantic</span></span>を用いた<span lang=EN-US>Gemini</span>構造化出力用データスキーマ定義<span
+lang=EN-US><br>
+│<span style='mso-spacerun:yes'>&nbsp;&nbsp; </span>├── gemini_client.py<span
+style='mso-spacerun:yes'>&nbsp; </span># Gemini API</span>（テキスト生成・構造化・画像生成）の呼び出しラッパー<span
+lang=EN-US><br>
+│<span style='mso-spacerun:yes'>&nbsp;&nbsp; </span>└── pptx_creator.py<span
+style='mso-spacerun:yes'>&nbsp;&nbsp; </span># python-pptx</span>を活用したスライド構築・デザイン適用ロジック<span
+lang=EN-US><br>
+│<br>
+└── output/<span
+style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span># </span>生成された一時画像、および最終出力<span lang=EN-US>PPTX</span>ファイルの保存先<span
+lang=EN-US><br style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></span></span><span lang=EN-US style='font-size:9.0pt;font-family:
+Consolas;mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;
+background:#F8F9FA'><o:p></o:p></span></p>
+
+<h2 style='margin-top:0mm'><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>4.
+</span><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>データ構造定義<span
+lang=EN-US> (<span class=SpellE>src</span>/schemas.py)</span></span></h2>
+
+<p class=MsoNormal style='line-height:125%;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>Gemini
+API</span><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>の「<span lang=EN-US>Structured
+Outputs</span>（構造化出力）」機能を用いて、不確定なテキストではなく、プログラムが確実に解釈可能な<span lang=EN-US>JSON</span>データを取得するための<span
+class=SpellE><span lang=EN-US>Pydantic</span></span>スキーマである。</span></p>
+
+<p class=MsoNormal style='margin-top:7.5pt;margin-right:7.5pt;margin-bottom:
+18.75pt;margin-left:7.5pt;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span lang=EN-US style='font-size:9.0pt;font-family:
+Consolas;mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:black;mso-color-alt:windowtext;background:#F8F9FA'>from <span
+class=SpellE>pydantic</span> import <span class=SpellE>BaseModel</span>, Field<br>
+from typing import List, Optional<br>
+<br>
+class <span class=SpellE>SlideTheme</span>(<span class=SpellE>BaseModel</span>):<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>primary_color</span>:
+str = Field(description=&quot;</span><span style='font-size:9.0pt;font-family:
+Consolas;mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:black;mso-color-alt:windowtext;background:#F8F9FA'>スライドのメインカラー（<span
+lang=EN-US>HEX</span>形式<span lang=EN-US>, </span>例<span lang=EN-US>: '#003366'</span>）<span
+lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>secondary_color</span>:
+str = Field(description=&quot;</span>サブカラー（<span lang=EN-US>HEX</span>形式<span
+lang=EN-US>, </span>例<span lang=EN-US>: '#4A90E2'</span>）<span lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>accent_color</span>:
+str = Field(description=&quot;</span>アクセントカラー（<span lang=EN-US>HEX</span>形式<span
+lang=EN-US>, </span>例<span lang=EN-US>: '#FF5733'</span>）<span lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>bg_color</span>:
+str = Field(description=&quot;</span>背景色（<span lang=EN-US>HEX</span>形式<span
+lang=EN-US>, </span>原則として白または極めて薄い色<span lang=EN-US>, </span>例<span lang=EN-US>:
+'#F9F9F9'</span>）<span lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>font_heading</span>:
+str = Field(description=&quot;</span>見出し用フォント名（例<span lang=EN-US>: 'Arial', '<span
+class=SpellE>Meiryo</span>'</span>）<span lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>font_body</span>:
+str = Field(description=&quot;</span>本文用フォント名（例<span lang=EN-US>: 'Arial', '<span
+class=SpellE>Meiryo</span>'</span>）<span lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>design_style_keyword</span>:
+str = Field(description=&quot;</span>画像生成<span lang=EN-US>AI</span>に渡す共通のスタイルキーワード（例<span
+lang=EN-US>: 'flat vector illustration, corporate minimalist, high quality,
+corporate blue tone'</span>）<span lang=EN-US>&quot;)<br>
+<br>
+class <span class=SpellE>SlideContent</span>(<span class=SpellE>BaseModel</span>):<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>slide_number</span>:
+int = Field(description=&quot;</span>スライド番号（<span lang=EN-US>1</span>から開始）<span
+lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>layout_type</span>:
+str = Field(description=&quot;</span>レイアウトの種類<span lang=EN-US> ('TITLE',
+'ONE_COLUMN', 'TWO_COLUMN', 'IMAGE_RIGHT', 'IMAGE_LEFT')&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>title: str =
+Field(description=&quot;</span>スライドのタイトル（最大<span lang=EN-US>20</span>文字）<span
+lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>subtitle:
+Optional[str] = Field(description=&quot;</span>スライドのサブタイトル（任意、表紙や章切り替え用）<span
+lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>bullet_points</span>:
+List[str] = Field(description=&quot;</span>箇条書き本文（各項目最大<span lang=EN-US>40</span>文字、最大<span
+lang=EN-US>4</span>項目）<span lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span><span class=SpellE>image_prompt</span>:
+Optional[str] = Field(description=&quot;</span>このスライドに挿入するアセット画像の生成用英語プロンプト。不要な場合は<span
+lang=EN-US>null</span>。デザインスタイルキーワードは含めず、被写体や構図のみを具体的に記載。<span lang=EN-US>&quot;)<br>
+<br>
+class <span class=SpellE>PresentationData</span>(<span class=SpellE>BaseModel</span>):<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>title: str =
+Field(description=&quot;</span>プレゼンテーション全体のタイトル<span lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>theme: <span
+class=SpellE>SlideTheme</span> = Field(description=&quot;</span>プレゼンテーション全体で統一するデザインテーマ<span
+lang=EN-US>&quot;)<br>
+<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>slides: List[<span
+class=SpellE>SlideContent</span>] = Field(description=&quot;</span>全スライドのコンテンツリスト<span
+lang=EN-US>&quot;)<br style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></span></span><span lang=EN-US style='font-size:9.0pt;font-family:
+Consolas;mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;
+background:#F8F9FA'><o:p></o:p></span></p>
+
+<h2 style='margin-top:0mm;margin-right:0mm;margin-bottom:12.0pt;margin-left:
+0mm'><span lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>5. </span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>アプリケーション処理フロー・アルゴリズム仕様</span></h2>
+
+<h3 style='margin-top:0mm'><span style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>【<span
+lang=EN-US>Phase 1</span>】<span lang=EN-US>UI</span>と複数フォーマットのファイル受付・テキスト抽出<span
+lang=EN-US> (app.py &amp; <span class=SpellE>src</span>/document_parser.py)</span></span></h3>
+
+<p class=MsoNormal style='line-height:125%;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>ユーザーからファイルのアップロードを受け付け、拡張子に応じて適切なライブラリを用いて内部テキストに変換する。</span></p>
+
+<p class=MsoNormal style='margin-left:30.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>●<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>対応フォーマット拡張<span
+lang=EN-US>:</span></span></b><span lang=EN-US> PDF, TXT, MD, DOCX, PPTX, XLSX</span></p>
+
+<p class=MsoNormal style='margin-left:30.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>●<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>テキスト抽出ロジックのアルゴリズム<span
+lang=EN-US>:</span></span></b></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-indent:-18.0pt;mso-list:l2 level2 lfo2;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>○<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span lang=EN-US>.txt / .md:</span></b><span
+lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'> </span><span style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>標準の<span
+lang=EN-US>UTF-8</span>文字列としてそのまま読み込む。</span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-indent:-18.0pt;mso-list:l2 level2 lfo2;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>○<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span lang=EN-US>.pdf:</span></b><span
+lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'> <span class=SpellE>pypdf.PdfReader</span></span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>を用いて全ページのテキストを結合する。</span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-indent:-18.0pt;mso-list:l2 level2 lfo2;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>○<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span lang=EN-US>.docx:</span></b><span
+lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'> <span class=SpellE>docx.Document</span></span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>を用いて全段落（<span lang=EN-US>paragraphs</span>）および表（<span
+lang=EN-US>tables</span>）のテキストを走査して結合する。</span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-indent:-18.0pt;mso-list:l2 level2 lfo2;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>○<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span lang=EN-US>.pptx:</span></b><span
+lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'> <span class=SpellE>pptx.Presentation</span></span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>を用いて各スライドのプレースホルダーやテキストボックス内の文字列をすべて抽出・結合する。</span></p>
+
+<p class=MsoNormal style='margin-left:60.0pt;text-indent:-18.0pt;mso-list:l2 level2 lfo2;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>○<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span lang=EN-US>.xlsx:</span></b><span
+lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'> <span class=SpellE>openpyxl.load_workbook</span></span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>を用いて各シートの有効セル値を<span lang=EN-US>CSV</span>ライクなテキスト形式（行ごとにカンマ区切り、またはタブ区切り）に変換して結合する。</span></p>
+
+<h3><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>【<span lang=EN-US>Phase 2</span>】構成およびデザイン設計の生成<span
+lang=EN-US> (<span class=SpellE>src</span>/gemini_client.py)</span></span></h3>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:125%;border:none;
+mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span
+lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>Phase 1</span><span style='font-family:
+"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:
+"Arial Unicode MS"'>で抽出された全テキスト情報と、ユーザーが画面から入力した「利用目的・ターゲット・状況」のプロンプトを統合し、<span
+lang=EN-US>Gemini API</span>に引き渡す。構造化出力モード（<span lang=EN-US>Structured Outputs</span>）を有効化し、<span
+class=SpellE><span lang=EN-US>PresentationData</span></span>クラスのスキーマに合致する<span
+lang=EN-US>JSON</span>を確実に取得する。</span></p>
+
+<h3 style='margin-top:0mm'><span style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>【<span
+lang=EN-US>Phase 3</span>】デザインアセット・画像の生成<span lang=EN-US> (<span class=SpellE>src</span>/gemini_client.py)</span></span></h3>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:125%;border:none;
+mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>得られた<span lang=EN-US>JSON</span>データ内の<span
+lang=EN-US>slides</span>をループ処理し、<span class=SpellE><span lang=EN-US>image_prompt</span></span>が指定されているスライドに対して画像生成を実行する。デザインの一貫性を確保するため、各スライドのプロンプトの末尾に、共通のテーマキーワードである<span
+class=SpellE><span lang=EN-US>theme.design_style_keyword</span></span>を自動的に結合して<span
+lang=EN-US>API</span>（例<span lang=EN-US>: imagen-3.0-generate-002</span>）を呼び出す。生成された画像は<span
+lang=EN-US>output/</span>ディレクトリに一時保存される。</span></p>
+
+<h3 style='margin-top:0mm'><span style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>【<span
+lang=EN-US>Phase 4</span>】<span lang=EN-US>PPTX</span>ファイルの組み立てとレイアウト調整<span
+lang=EN-US> (<span class=SpellE>src</span>/pptx_creator.py)</span></span></h3>
+
+<p class=MsoNormal style='line-height:125%;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>python-pptx</span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>を使用し、白紙のスライドに対して動的に要素を配置していく。</span></p>
+
+<p class=MsoNormal style='margin-left:30.0pt;text-indent:-18.0pt;mso-list:l1 level1 lfo3;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>●<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>文字はみ出し防止アルゴリズム<span
+lang=EN-US>:</span></span></b><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>
+</span><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>テキストの文字数（<span
+class=SpellE><span lang=EN-US>len</span></span><span lang=EN-US>(pt)</span>）を判定し、<span
+lang=EN-US>30</span>文字を超える場合はフォントサイズを自動的に<span lang=EN-US>14pt</span>に縮小、<span
+lang=EN-US>20</span>文字程度であれば<span lang=EN-US>16pt</span>、それ以下であれば<span
+lang=EN-US>20pt</span>といったように、テキストボックスの領域内からはみ出さない動的調整ロジックを実装する。</span></p>
+
+<p class=MsoNormal style='margin-left:30.0pt;text-indent:-18.0pt;mso-list:l1 level1 lfo3;
+border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><![if !supportLists]><span
+lang=EN-US style='mso-fareast-font-family:Arial;color:black'><span
+style='mso-list:Ignore'>●<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b><span style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>カラー適用<span
+lang=EN-US>:</span></span></b><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>
+</span><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>各スライドの背景に対して<span
+class=SpellE><span lang=EN-US>theme.bg_color</span></span>（<span lang=EN-US>HEX</span>から<span
+lang=EN-US>RGB</span>に変換）を適用し、タイトルの文字色には<span class=SpellE><span lang=EN-US>theme.primary_color</span></span>を、強調箇所には<span
+class=SpellE><span lang=EN-US>theme.accent_color</span></span>を適用して視覚的な統一感を持たせる。</span></p>
+
+<p class=MsoNormal style='margin-bottom:11.25pt;border:none;mso-padding-alt:
+31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<h2><span lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>6. </span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>開発環境構築手順（<span lang=EN-US>Cursor</span>への指示用）</span></h2>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;line-height:125%;border:none;
+mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>開発環境を構築するための、必要な依存ライブラリ一覧および環境変数の定義である。</span></p>
+
+<h3 style='margin-top:0mm'><span lang=EN-US>1. requirements.txt</span></h3>
+
+<p class=MsoNormal style='margin-top:7.5pt;margin-right:7.5pt;margin-bottom:
+19.5pt;margin-left:7.5pt;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span class=SpellE><span lang=EN-US style='font-size:
+9.0pt;font-family:Consolas;mso-fareast-font-family:Consolas;mso-bidi-font-family:
+Consolas;color:black;mso-color-alt:windowtext;background:#F8F9FA'>streamlit</span></span><span
+lang=EN-US style='font-size:9.0pt;font-family:Consolas;mso-fareast-font-family:
+Consolas;mso-bidi-font-family:Consolas;color:black;mso-color-alt:windowtext;
+background:#F8F9FA'>&gt;=1.35.0<br>
+google-<span class=SpellE>genai</span>&gt;=0.1.1<br>
+<span class=SpellE>pydantic</span>&gt;=2.0<br>
+python-pptx&gt;=0.6.23<br>
+python-<span class=SpellE>dotenv</span>&gt;=1.0.1<br>
+pillow&gt;=10.0.0<br>
+<span class=SpellE>pypdf</span>&gt;=4.0.0<br>
+python-docx&gt;=1.1.0<br>
+<span class=SpellE>openpyxl</span>&gt;=3.1.0<br style='mso-special-character:
+line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></span><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;
+mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;background:#F8F9FA'><o:p></o:p></span></p>
+
+<h3 style='margin-top:0mm'><span lang=EN-US style='font-family:"Arial Unicode MS";
+mso-fareast-font-family:"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>2.
+.env (</span><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>テンプレート<span
+lang=EN-US>)</span></span></h3>
+
+<p class=MsoNormal style='margin:7.5pt;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span lang=EN-US style='font-size:9.0pt;font-family:
+Consolas;mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;
+color:black;mso-color-alt:windowtext;background:#F8F9FA'>GEMINI_API_KEY=&quot;<span
+class=SpellE>AIzaSyYourActualGeminiApiKeyHere</span>&quot;<br>
+OUTPUT_DIR=&quot;./output&quot;<br style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></span><span lang=EN-US style='font-size:9.0pt;font-family:Consolas;
+mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;background:#F8F9FA'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:11.25pt;border:none;mso-padding-alt:
+31.0pt 31.0pt 31.0pt 31.0pt;mso-border-shadow:yes'><span lang=EN-US
+style='font-size:9.0pt;font-family:Consolas;mso-fareast-font-family:Consolas;
+mso-bidi-font-family:Consolas;background:#F8F9FA'><o:p>&nbsp;</o:p></span></p>
+
+<h2><span lang=EN-US style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>Cursor</span><span
+style='font-family:"Arial Unicode MS";mso-fareast-font-family:"Arial Unicode MS";
+mso-bidi-font-family:"Arial Unicode MS"'>（<span lang=EN-US>AI</span>）への最初の指示プロンプト（コピペ用）</span></h2>
+
+<p class=MsoNormal style='line-height:125%;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span style='font-family:"Arial Unicode MS";mso-fareast-font-family:
+"Arial Unicode MS";mso-bidi-font-family:"Arial Unicode MS"'>プロジェクトのルートディレクトリに本仕様書ファイルを配置した後、<span
+lang=EN-US>Cursor</span>の<span lang=EN-US>Chat</span>機能（<span class=SpellE><span
+lang=EN-US>Ctrl+L</span></span>）に以下のプロンプトを投入して開発を開始する。</span></p>
+
+<p class=MsoNormal style='margin:7.5pt;border:none;mso-padding-alt:31.0pt 31.0pt 31.0pt 31.0pt;
+mso-border-shadow:yes'><span style='font-size:9.0pt;font-family:Consolas;
+mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;color:black;
+mso-color-alt:windowtext;background:#F8F9FA'>提示した仕様書（本ドキュメント）を完全に読み込み、理解してください。<span
+lang=EN-US><br>
+</span>本仕様書に定義されている、複数フォーマット（<span lang=EN-US>PDF, TXT, MD, DOCX, PPTX, XLSX</span>）に対応した<span
+lang=EN-US>AI</span>駆動型<span lang=EN-US>PPTX</span>自動生成<span class=SpellE><span
+lang=EN-US>Streamlit</span></span>アプリケーションの構築を開始します。<span lang=EN-US><br>
+<br>
+</span>まずは【ステップ<span lang=EN-US>1</span>】として、環境構築のための<span lang=EN-US>
+requirements.txt </span>を作成し、各種ファイル形式からテキストを適切に抽出するモジュール<span lang=EN-US> `<span
+class=SpellE>src</span>/document_parser.py` </span>を実装してください。<span lang=EN-US><br>
+</span>各種エラーハンドリング（ファイル破損、テキスト抽出不能時の処理など）を徹底し、コードを生成してください。<span lang=EN-US><br
+style='mso-special-character:line-break'>
+<![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+<![endif]></span></span><span lang=EN-US style='font-size:9.0pt;font-family:
+Consolas;mso-fareast-font-family:Consolas;mso-bidi-font-family:Consolas;
+background:#F8F9FA'><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

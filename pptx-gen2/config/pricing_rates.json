@@ -1,0 +1,30 @@
+{
+  "_comment": "料金は変更される可能性があるため、各社の公式料金ページで定期的に(例: 月1回)確認・更新してください。各価格は米ドル($)基準・標準モデルを想定した参考値です。",
+  "gemini": {
+    "input_per_1m": 1.25,
+    "output_per_1m": 5.0,
+    "video_per_sec": 0.000375,
+    "audio_per_sec": 4e-05,
+    "video_tokens_per_sec": 300,
+    "audio_tokens_per_sec": 32
+  },
+  "claude": {
+    "input_per_1m": 3.0,
+    "output_per_1m": 15.0,
+    "image_per_unit": 0.0048
+  },
+  "gpt4o": {
+    "input_per_1m": 2.5,
+    "output_per_1m": 10.0,
+    "image_per_unit": 0.002125
+  },
+  "grok": {
+    "input_per_1m": 2.0,
+    "output_per_1m": 10.0
+  },
+  "output_tokens_per_slide": {
+    "structured_json": 800,
+    "narrative": 400,
+    "layout_code": 600
+  }
+}

@@ -1,0 +1,281 @@
+#!/usr/bin/env bash
+# appctl - 各種アプリ(systemd)サービスを簡単に管理するツール
+#
+# 使い方:
+#   appctl                          # 対話メニュー
+#   appctl <action> [target]        # 直接実行
+#
+# action: status | restart | start | stop | logs | enable | disable
+# target: faq | eval | exam | fback | nai | naictrl | naiv2 | naiv2ctrl | tts | pptxgen | pptxan | pptxgen2 | all  (省略時は all)
+#
+# 例:
+#   appctl restart faq
+#   appctl status all
+#   appctl logs exam
+
+set -u
+
+# ========== サービス定義 ==========
+# 別名(短縮名) → systemd ユニット名
+declare -A SERVICES=(
+    [faq]="faq-bot-a.service"
+    [faqlog]="faqlog.service"
+    [eval]="employee-eval.service"
+    [exam]="exam-app.service"
+    [fback]="fback.service"
+    [nai]="gemini-ui.service"
+    [naictrl]="gemini-ui-admin.service"
+    [naiv2]="gemini-ui2.service"
+    [naiv2ctrl]="gemini-ui2-admin.service"
+    [tts]="tts.service"
+    [statusapi]="server-status-api.service"
+    [pptxgen]="pptx-gen.service"
+    [pptxan]="pptx-gen-an.service"
+    [pptxgen2]="pptx-gen2.service"
+)
+
+# 表示順
+SERVICE_ORDER=(faq faqlog eval exam fback nai naictrl naiv2 naiv2ctrl tts statusapi pptxgen pptxan pptxgen2)
+
+# ========== カラー ==========
+if [[ -t 1 ]]; then
+    C_RED=$'\033[31m'
+    C_GREEN=$'\033[32m'
+    C_YELLOW=$'\033[33m'
+    C_BLUE=$'\033[34m'
+    C_CYAN=$'\033[36m'
+    C_BOLD=$'\033[1m'
+    C_RESET=$'\033[0m'
+else
+    C_RED='' C_GREEN='' C_YELLOW='' C_BLUE='' C_CYAN='' C_BOLD='' C_RESET=''
+fi
+
+# ========== ヘルパー ==========
+need_sudo() {
+    # 非root の場合は sudo を前置
+    if [[ $EUID -ne 0 ]]; then
+        echo "sudo"
+    fi
+}
+
+SUDO=$(need_sudo)
+
+# 別名 → ユニット名 解決
+resolve_unit() {
+    local alias="$1"
+    if [[ -n "${SERVICES[$alias]:-}" ]]; then
+        echo "${SERVICES[$alias]}"
+        return 0
+    fi
+    return 1
+}
+
+# ターゲット指定(faq/eval/.../all)→ 対象別名のリスト
+resolve_targets() {
+    local target="${1:-all}"
+    if [[ "$target" == "all" ]]; then
+        printf '%s\n' "${SERVICE_ORDER[@]}"
+        return 0
+    fi
+    if [[ -n "${SERVICES[$target]:-}" ]]; then
+        echo "$target"
+        return 0
+    fi
+    echo "${C_RED}不明なターゲット: $target${C_RESET}" >&2
+    echo "利用可能: ${SERVICE_ORDER[*]} all" >&2
+    return 1
+}
+
+# 一行ステータス
+status_one() {
+    local alias="$1"
+    local unit
+    unit=$(resolve_unit "$alias")
+    local active sub
+    active=$(systemctl is-active "$unit" 2>/dev/null || true)
+    sub=$(systemctl show -p SubState --value "$unit" 2>/dev/null || true)
+
+    local color="$C_RED"
+    [[ "$active" == "active" ]] && color="$C_GREEN"
+    [[ "$active" == "activating" || "$active" == "reloading" ]] && color="$C_YELLOW"
+
+    printf "  ${C_BOLD}%-7s${C_RESET} %-25s ${color}%-10s${C_RESET} (%s)\n" \
+        "$alias" "$unit" "$active" "$sub"
+}
+
+print_status_all() {
+    echo "${C_CYAN}${C_BOLD}=== サービス状態 ===${C_RESET}"
+    for a in "${SERVICE_ORDER[@]}"; do
+        status_one "$a"
+    done
+    echo
+}
+
+# アクション実行 (start/stop/restart/enable/disable)
+run_action() {
+    local action="$1"; shift
+    local targets=("$@")
+    local rc=0
+    for a in "${targets[@]}"; do
+        local unit
+        unit=$(resolve_unit "$a") || continue
+        echo "${C_BLUE}▶ ${action} ${unit}${C_RESET}"
+        if $SUDO systemctl "$action" "$unit"; then
+            echo "  ${C_GREEN}✔ OK${C_RESET}"
+        else
+            echo "  ${C_RED}✘ 失敗${C_RESET}"
+            rc=1
+        fi
+    done
+    echo
+    print_status_all
+    return $rc
+}
+
+# ログ表示
+show_logs() {
+    local alias="$1"
+    local lines="${2:-80}"
+    local unit
+    unit=$(resolve_unit "$alias") || return 1
+    echo "${C_CYAN}${C_BOLD}=== ログ: $unit (最新 $lines 行) ===${C_RESET}"
+    $SUDO journalctl -u "$unit" -n "$lines" --no-pager
+}
+
+# ========== 対話メニュー ==========
+interactive_menu() {
+    while true; do
+        clear
+        echo "${C_CYAN}${C_BOLD}╔══════════════════════════════════════════╗${C_RESET}"
+        echo "${C_CYAN}${C_BOLD}║   アプリサービス管理ツール  (appctl)     ║${C_RESET}"
+        echo "${C_CYAN}${C_BOLD}╚══════════════════════════════════════════╝${C_RESET}"
+        echo
+        print_status_all
+        echo "${C_BOLD}操作を選択してください:${C_RESET}"
+        echo "  ${C_GREEN}1)${C_RESET} 全サービス再起動"
+        echo "  ${C_GREEN}2)${C_RESET} 個別サービス再起動"
+        echo "  ${C_GREEN}3)${C_RESET} 個別サービス停止"
+        echo "  ${C_GREEN}4)${C_RESET} 個別サービス開始"
+        echo "  ${C_GREEN}5)${C_RESET} ログ表示"
+        echo "  ${C_GREEN}6)${C_RESET} 状態を再表示"
+        echo "  ${C_GREEN}q)${C_RESET} 終了"
+        echo
+        read -rp "選択 > " choice
+        case "$choice" in
+            1)
+                read -rp "本当に全サービスを再起動しますか? [y/N] " yn
+                [[ "$yn" =~ ^[Yy]$ ]] && run_action restart "${SERVICE_ORDER[@]}"
+                read -rp "Enterで続行..." _
+                ;;
+            2|3|4)
+                local act
+                case "$choice" in
+                    2) act=restart;;
+                    3) act=stop;;
+                    4) act=start;;
+                esac
+                echo
+                local i=1
+                for a in "${SERVICE_ORDER[@]}"; do
+                    printf "  %d) %s (%s)\n" "$i" "$a" "${SERVICES[$a]}"
+                    ((i++))
+                done
+                read -rp "番号を選択 > " idx
+                if [[ "$idx" =~ ^[0-9]+$ ]] && (( idx >= 1 && idx <= ${#SERVICE_ORDER[@]} )); then
+                    local target="${SERVICE_ORDER[$((idx-1))]}"
+                    run_action "$act" "$target"
+                else
+                    echo "${C_RED}無効な選択${C_RESET}"
+                fi
+                read -rp "Enterで続行..." _
+                ;;
+            5)
+                echo
+                local i=1
+                for a in "${SERVICE_ORDER[@]}"; do
+                    printf "  %d) %s\n" "$i" "$a"
+                    ((i++))
+                done
+                read -rp "番号を選択 > " idx
+                if [[ "$idx" =~ ^[0-9]+$ ]] && (( idx >= 1 && idx <= ${#SERVICE_ORDER[@]} )); then
+                    show_logs "${SERVICE_ORDER[$((idx-1))]}" 100
+                fi
+                read -rp "Enterで続行..." _
+                ;;
+            6) ;;
+            q|Q) echo "終了します"; exit 0;;
+            *) echo "${C_RED}無効な選択${C_RESET}"; sleep 1;;
+        esac
+    done
+}
+
+# ========== ヘルプ ==========
+usage() {
+    cat <<EOF
+${C_BOLD}appctl${C_RESET} - アプリサービス管理ツール
+
+${C_BOLD}使い方:${C_RESET}
+  appctl                          対話メニューを起動
+  appctl <action> [target]        直接コマンド実行
+
+${C_BOLD}action:${C_RESET}
+  status      状態表示
+  restart     再起動
+  start       開始
+  stop        停止
+  logs        ログ表示 (最新80行)
+  enable      自動起動有効化
+  disable     自動起動無効化
+
+${C_BOLD}target (省略可、デフォルト all):${C_RESET}
+$(for a in "${SERVICE_ORDER[@]}"; do printf "  %-7s -> %s\n" "$a" "${SERVICES[$a]}"; done)
+  all     全サービス
+
+${C_BOLD}例:${C_RESET}
+  appctl restart faq         FAQ Bot だけ再起動
+  appctl restart all         全サービスを再起動
+  appctl status              全サービスの状態確認
+  appctl logs exam           Exam のログを表示
+EOF
+}
+
+# ========== メイン ==========
+main() {
+    if [[ $# -eq 0 ]]; then
+        interactive_menu
+        exit 0
+    fi
+
+    local action="$1"
+    local target="${2:-all}"
+
+    case "$action" in
+        -h|--help|help)
+            usage
+            ;;
+        status)
+            print_status_all
+            ;;
+        restart|start|stop|enable|disable)
+            mapfile -t targets < <(resolve_targets "$target") || exit 1
+            run_action "$action" "${targets[@]}"
+            ;;
+        logs)
+            if [[ "$target" == "all" ]]; then
+                for a in "${SERVICE_ORDER[@]}"; do
+                    show_logs "$a" 30
+                    echo
+                done
+            else
+                show_logs "$target" 100
+            fi
+            ;;
+        *)
+            echo "${C_RED}不明なアクション: $action${C_RESET}" >&2
+            usage
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"

@@ -1,0 +1,38 @@
+{
+  "file_parsing_text": {
+    "priority": ["gemini", "claude", "gpt4o"],
+    "reason": "長文脈・多形式の一次解析に強い"
+  },
+  "audio_video_understanding": {
+    "priority": ["gemini"],
+    "reason": "ネイティブ音声/動画理解はGeminiのみ対応"
+  },
+  "content_synthesis": {
+    "priority": ["gemini", "claude"],
+    "reason": "複数ソース横断の長文脈統合"
+  },
+  "slide_structure_planning": {
+    "priority": ["claude", "gpt4o", "gemini"],
+    "reason": "枚数・時間制約を踏まえた構成設計の精度"
+  },
+  "structured_json_payload": {
+    "priority": ["gpt4o", "claude", "gemini"],
+    "reason": "厳密なJSONスキーマ準拠率"
+  },
+  "japanese_narrative": {
+    "priority": ["claude", "gemini", "gpt4o"],
+    "reason": "自然な日本語表現の質"
+  },
+  "slide_layout_code_generation": {
+    "priority": ["claude", "gpt4o", "gemini"],
+    "reason": "コード生成・デザイン判断の精度"
+  },
+  "design_visual_qa": {
+    "priority": ["claude", "gpt4o"],
+    "reason": "画像入力によるレイアウト検証(Vision対応必須)"
+  },
+  "fallback": {
+    "priority": ["grok"],
+    "reason": "他モデル全てキー未設定/エラー時の最終手段"
+  }
+}

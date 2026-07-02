@@ -1,0 +1,19 @@
+[Unit]
+Description=Multi-LLM PPTX Auto Generator (Port 8517)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/pptx-gen2
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/opt/pptx-gen2/venv/bin/streamlit run app.py \
+    --server.port 8517 \
+    --server.address 172.16.16.10 \
+    --server.headless true \
+    --browser.gatherUsageStats false \
+    --server.maxUploadSize 50
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
