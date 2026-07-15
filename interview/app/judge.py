@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from typing import Any
 
 from app.config import Settings
@@ -11,11 +12,21 @@ from app.providers.base import Message
 from app.providers.registry import get_provider_for_role
 from app.rubrics_util import get_judge_perspectives, load_rubrics
 
-JUDGE_JSON_SCHEMA = """
-{
-  "scores": {"観点名": 1-7の整数, ...},
-  "good_points": [{"text": "良い点の説明", "quote": "発言引用"}],
-  "improvements": [{"text": "改善点", "quote": "発言引用", "principle": "マニュアル原則"}],
+logger = logging.getLogger(__name__)
+
+
+def score_bounds_from_rating_scale(rating: dict[str, Any]) -> tuple[int, int]:
+    """Derive score min/max from rubrics rating_scale entry scores."""
+    values = [int(entry["score"]) for entry in rating.values()]
+    return min(values), max(values)
+
+
+def build_judge_json_schema(score_min: int, score_max: int) -> str:
+    """Assemble judge output schema with rubric-derived score range."""
+    return f"""{{
+  "scores": {{"観点名": {score_min}-{score_max}の整数, ...}},
+  "good_points": [{{"text": "良い点の説明", "quote": "発言引用"}}],
+  "improvements": [{{"text": "改善点", "quote": "発言引用", "principle": "マニュアル原則"}}],
   "overall_evaluation": "全体的な評価テキスト",
   "overall_grade": "S|A|B|C|D",
   "summary": "総評（次回アドバイス含む）",
@@ -23,15 +34,92 @@ JUDGE_JSON_SCHEMA = """
   "avg_score": 数値,
   "goal_level_percent": 数値またはnull,
   "goal_level_reached": true/false/null,
-  "feedback_flow_observed": {"acknowledgment": bool, "deep_dive": bool, "expectation": bool} | null  // 2Aのみ。1B/2Bはnull
-}
-"""
+  "feedback_flow_observed": {{"acknowledgment": bool, "deep_dive": bool, "expectation": bool}} | null  // 2Aのみ。1B/2Bはnull
+}}"""
+
+
+# Existing tests import this symbol; keep acknowledgment and live rubric bounds.
+_SCORE_MIN, _SCORE_MAX = score_bounds_from_rating_scale(load_rubrics()["rating_scale"])
+JUDGE_JSON_SCHEMA = build_judge_json_schema(_SCORE_MIN, _SCORE_MAX)
+
+
+def _coerce_numeric(value: Any) -> float | None:
+    """Return float if value is a finite number (bool excluded); else None."""
+    if isinstance(value, bool) or value is None:
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return None
+        try:
+            return float(text)
+        except ValueError:
+            return None
+    return None
+
+
+def normalize_judge_scores(
+    result: dict[str, Any],
+    score_min: int,
+    score_max: int,
+) -> dict[str, Any]:
+    """Clamp/round valid scores; drop non-numeric; recompute avg_score."""
+    raw_scores = result.get("scores")
+    if not isinstance(raw_scores, dict):
+        result["scores"] = {}
+        result["avg_score"] = None
+        result.pop("score_corrections", None)
+        return result
+
+    corrected_scores: dict[str, int] = {}
+    corrections: list[dict[str, Any]] = []
+
+    for perspective, original in raw_scores.items():
+        numeric = _coerce_numeric(original)
+        if numeric is None:
+            corrections.append(
+                {
+                    "perspective": perspective,
+                    "original": original,
+                    "corrected": None,
+                }
+            )
+            continue
+
+        rounded = int(round(numeric))
+        clamped = max(score_min, min(score_max, rounded))
+        corrected_scores[perspective] = clamped
+        if clamped != original:
+            corrections.append(
+                {
+                    "perspective": perspective,
+                    "original": original,
+                    "corrected": clamped,
+                }
+            )
+
+    result["scores"] = corrected_scores
+    if corrections:
+        result["score_corrections"] = corrections
+        logger.info("judge score_corrections=%s", corrections)
+    else:
+        result.pop("score_corrections", None)
+
+    if corrected_scores:
+        result["avg_score"] = sum(corrected_scores.values()) / len(corrected_scores)
+    else:
+        result["avg_score"] = None
+    return result
 
 
 def build_judge_system_prompt(config: SessionConfig, persona: dict[str, Any]) -> str:
     rubrics = load_rubrics()
     perspectives = get_judge_perspectives(config.role)
     rating = rubrics["rating_scale"]
+    score_min, score_max = score_bounds_from_rating_scale(rating)
+    schema = build_judge_json_schema(score_min, score_max)
     rating_text = "\n".join(
         f"- {k}({v['score']}): 成果={v['achievement']} / プロセス={v['process']}"
         for k, v in rating.items()
@@ -75,7 +163,7 @@ def build_judge_system_prompt(config: SessionConfig, persona: dict[str, Any]) ->
 - JSONのみ返す
 
 【出力スキーマ】
-{JUDGE_JSON_SCHEMA}
+{schema}
 """
 
 
@@ -101,17 +189,21 @@ class JudgeService:
             f"{json.dumps({k: v for k, v in persona.items() if k != 'hidden_facts'}, ensure_ascii=False)}\n"
             f"トランスクリプト:\n{transcript_text}"
         )
+        score_min, score_max = score_bounds_from_rating_scale(
+            load_rubrics()["rating_scale"]
+        )
         raw = self._provider.generate(
             system,
             [Message(role="user", content=user_content)],
             json_mode=True,
         )
         try:
-            return json.loads(raw)
+            parsed: dict[str, Any] = json.loads(raw)
         except json.JSONDecodeError:
             retry = self._provider.generate(
                 system + "\n前回は不正なJSONでした。有効なJSONのみ返してください。",
                 [Message(role="user", content=user_content)],
                 json_mode=True,
             )
-            return json.loads(retry)
+            parsed = json.loads(retry)
+        return normalize_judge_scores(parsed, score_min, score_max)
