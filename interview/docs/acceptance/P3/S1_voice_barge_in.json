@@ -1,0 +1,19 @@
+[
+  {
+    "trigger": "client_early_input_after_transcript",
+    "audio_chunks_before": 0,
+    "partner_played_before_interrupt": "数値、ですか…。そうですね、効率化の方は、来期末までに生産数を前期比で…5%くらい上げられたらいいかな、と。\n品質の方は…不良率を0.5%以下に抑える、とかですかね…。まあ、できるか分からないですけど…。",
+    "interrupt_utterance": "品質向上ではなく、上期までに検査ミスを月3件に抑える形にしてほしい。",
+    "after_user_seq": 1
+  },
+  {
+    "trigger": "server_interrupted",
+    "partner_played_before_interrupt": "数値、ですか…。そうですね、効率化の方は、来期末までに生産数を前期比で…5%くらい上げられたらいいかな、と。\n品質の方は…不良率を0.5%以下に抑える、とかですかね…。まあ、できるか分からないですけど…。",
+    "after_user_seq": 1
+  },
+  {
+    "trigger": "server_interrupted",
+    "partner_played_before_interrupt": "",
+    "after_user_seq": 3
+  }
+]

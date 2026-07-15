@@ -1,0 +1,10 @@
+{
+  "categories": [
+    {"id": "manufacturing", "label": "製造"},
+    {"id": "quality", "label": "品質保証"},
+    {"id": "production_tech", "label": "生産技術"},
+    {"id": "general_affairs", "label": "総務"},
+    {"id": "sales", "label": "営業"},
+    {"id": "other", "label": "その他"}
+  ]
+}

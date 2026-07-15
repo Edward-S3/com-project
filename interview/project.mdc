@@ -1,0 +1,21 @@
+---
+description: 1on1面談シミュレーションアプリ プロジェクトルール
+alwaysApply: true
+---
+
+# プロジェクトルール
+
+このプロジェクトで作業する前に、必ず以下を読み込むこと。
+
+1. `docs/SPECIFICATION.md` — 機能仕様の正本
+2. `docs/CURSOR_INSTRUCTIONS.md` — 開発指示書（絶対制約・フェーズ・規約）
+
+両文書が矛盾する場合は SPECIFICATION.md を優先し、矛盾を発見したら作業を止めて報告する。
+仕様の解釈に迷った場合は推測で実装せず、`docs/QUESTIONS.md` に論点を記載して人間の回答を待つ。
+
+主要な絶対制約（詳細は CURSOR_INSTRUCTIONS.md セクション2）:
+- 動作環境: Ubuntu `/opt/interview` + venv。純Python + 外部API のみ
+- 等級は7等級制（8等級を作らない）、利用者情報に性別を含めない
+- 音声はGemini Live API基準、UIはFastAPI+静的フロント（Streamlit禁止)
+- .env は600・git管理外。APIキーを出力しない
+- 判定ルールは data/rubrics.json から読み込む（プロンプト直書き禁止）

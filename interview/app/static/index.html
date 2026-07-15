@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1on1面談シミュレーション</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>1on1面談シミュレーション</h1>
+    <nav id="nav">
+      <button data-screen="s01">プロフィール</button>
+      <button data-screen="s02" disabled>設定</button>
+      <button data-screen="s03" disabled>面談</button>
+      <button data-screen="s04" disabled>講評</button>
+      <button data-screen="s05" disabled>履歴</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- S-01 -->
+    <section id="s01" class="screen active">
+      <h2>プロフィール選択 / 新規登録</h2>
+      <div class="consent box">
+        <p>面談ログは保存され総務等が閲覧できます。内容は外部AI APIに送信されます。実在の人事情報・機密情報を入力しないでください。</p>
+        <label><input type="checkbox" id="consent"> 上記に同意する</label>
+      </div>
+      <div class="grid">
+        <div>
+          <h3>既存プロフィール</h3>
+          <ul id="user-list"></ul>
+        </div>
+        <div>
+          <h3>新規登録</h3>
+          <form id="user-form">
+            <label>氏名 <input name="name" required></label>
+            <label>部門カテゴリ <select name="department" id="dept-select"></select></label>
+            <label>詳細 <input name="department_detail" placeholder="任意"></label>
+            <label>年齢 <input name="age" type="number" min="18" max="70" required></label>
+            <label>勤続年数 <input name="tenure_years" type="number" min="0" max="50" required></label>
+            <label>等級 <select name="grade" id="grade-select"></select></label>
+            <button type="submit">登録して続行</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- S-02 -->
+    <section id="s02" class="screen">
+      <h2>セッション設定</h2>
+      <form id="session-form">
+        <label>シーン
+          <select name="scene" id="scene-select"></select>
+        </label>
+        <label>役割
+          <select name="role" id="role-select"></select>
+        </label>
+        <label>難易度
+          <select name="difficulty" id="difficulty-select"></select>
+        </label>
+        <label>入出力
+          <select name="io_mode" id="io-select"></select>
+        </label>
+        <button type="submit">面談を開始</button>
+      </form>
+    </section>
+
+    <!-- S-03 -->
+    <section id="s03" class="screen">
+      <h2>面談 <span id="mode-label"></span></h2>
+      <div class="interview-layout">
+        <aside class="guide box">
+          <h3>面談5ステップ</h3>
+          <ol id="five-steps"></ol>
+        </aside>
+        <div class="chat-area">
+          <div id="voice-bar" class="voice-bar" hidden>
+            <span id="voice-status">音声: 待機</span>
+            <button type="button" id="mic-toggle">マイク開始</button>
+            <button type="button" id="io-toggle">テキスト入力へ</button>
+            <span id="speaking-indicator" class="speaking" hidden>AI発話中</span>
+          </div>
+          <div id="transcript" class="transcript"></div>
+          <div id="warnings" class="warnings"></div>
+          <form id="chat-form">
+            <textarea id="user-input" rows="3" placeholder="発言を入力"></textarea>
+            <button type="submit">送信</button>
+            <button type="button" id="end-btn">面談終了</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- S-04 -->
+    <section id="s04" class="screen">
+      <h2>講評レポート</h2>
+      <canvas id="radar" width="400" height="400"></canvas>
+      <div id="report-content"></div>
+      <button id="to-history">履歴へ</button>
+    </section>
+
+    <!-- S-05 -->
+    <section id="s05" class="screen">
+      <h2>マイページ（履歴）</h2>
+      <ul id="history-list"></ul>
+      <button id="new-session">新しい面談</button>
+    </section>
+  </main>
+
+  <script src="/static/audio.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

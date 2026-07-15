@@ -1,0 +1,13 @@
+.env
+.venv/
+data/sessions.db
+logs/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+# mkcert local TLS certificates (P3)
+certs/
+*.pem
+*-key.pem
