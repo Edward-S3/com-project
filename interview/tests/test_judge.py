@@ -4,6 +4,7 @@ from app.judge import (
     JUDGE_JSON_SCHEMA,
     build_judge_json_schema,
     build_judge_system_prompt,
+    format_transcript_for_judge,
     normalize_judge_scores,
     score_bounds_from_rating_scale,
 )
@@ -87,3 +88,31 @@ def test_build_judge_system_prompt_embeds_3_to_7_scale():
     )
     assert "3-7の整数" in prompt
     assert "1-7の整数" not in prompt
+
+
+def test_format_transcript_for_judge_labels_interrupted():
+    text = format_transcript_for_judge(
+        [
+            {"speaker": "partner", "text": "通常応答"},
+            {
+                "speaker": "partner",
+                "text": "途中までの内容です",
+                "interrupted": True,
+            },
+            {"speaker": "user", "text": "割込発話"},
+        ]
+    )
+    assert "[partner] 通常応答" in text
+    assert "[partner] (途中打ち切り) 途中までの内容です" in text
+    assert "[user] 割込発話" in text
+    assert "(途中打ち切り)" not in text.splitlines()[0]
+
+
+def test_build_judge_system_prompt_includes_interrupted_rule():
+    prompt = build_judge_system_prompt(
+        SessionConfig("initial", "supervisor", "sme", "text"),
+        {"role": "subordinate", "display_name": "テスト"},
+    )
+    assert "途中打ち切り" in prompt
+    assert "高評価の根拠として引用してはならない" in prompt
+    assert "バージイン" in prompt

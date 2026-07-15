@@ -160,11 +160,25 @@ def build_judge_system_prompt(config: SessionConfig, persona: dict[str, Any]) ->
 - 5=期待水準通り。安易に高得点をつけない（寛大化回避）
 - 発言引用を必ず含める
 - improvements[].principle にはマニュアル原則名（面談5ステップ、き・ぐ・た・か・そ観点名、評価者エラー類型名等）のみ記載する。採点方針や内部指示文は入れない。該当なしは空文字
+- （途中打ち切り）ラベル付き発話は途中で遮られた発話であり、内容の一部は相手に聞こえていない。この発話の内容を高評価の根拠として引用してはならない。遮り（バージイン）の発生自体は面談進行の文脈として考慮してよい
 - JSONのみ返す
 
 【出力スキーマ】
 {schema}
 """
+
+
+def format_transcript_for_judge(transcript: list[dict[str, Any]]) -> str:
+    """Format transcript lines; label interrupted turns for the judge prompt."""
+    lines: list[str] = []
+    for turn in transcript:
+        speaker = turn.get("speaker", "")
+        text = turn.get("text", "")
+        if turn.get("interrupted") is True:
+            lines.append(f"[{speaker}] (途中打ち切り) {text}")
+        else:
+            lines.append(f"[{speaker}] {text}")
+    return "\n".join(lines)
 
 
 class JudgeService:
@@ -176,13 +190,11 @@ class JudgeService:
         self,
         config: SessionConfig,
         persona: dict[str, Any],
-        transcript: list[dict[str, str]],
+        transcript: list[dict[str, Any]],
         user_profile: dict[str, Any],
     ) -> dict[str, Any]:
         system = build_judge_system_prompt(config, persona)
-        transcript_text = "\n".join(
-            f"[{t['speaker']}] {t['text']}" for t in transcript
-        )
+        transcript_text = format_transcript_for_judge(transcript)
         user_content = (
             f"利用者プロフィール: {json.dumps(user_profile, ensure_ascii=False)}\n"
             f"ペルソナ(採点参考・hidden_facts除く): "

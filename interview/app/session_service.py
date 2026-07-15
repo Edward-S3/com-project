@@ -17,6 +17,42 @@ from app.persona import build_persona
 from app.providers.registry import get_provider_for_role
 from app.rubrics_util import strip_hidden_facts
 
+_INTERRUPTED_MARKER = "[interrupted]"
+
+
+def _warnings_indicate_interrupted(warnings_json: str | None) -> bool:
+    """True when warnings_json list contains an [interrupted] marker string."""
+    if warnings_json is None:
+        return False
+    if not isinstance(warnings_json, str):
+        return False
+    text = warnings_json.strip()
+    if not text:
+        return False
+    try:
+        parsed = json.loads(text)
+    except (json.JSONDecodeError, TypeError):
+        return False
+    if not isinstance(parsed, list):
+        return False
+    return any(
+        isinstance(item, str) and _INTERRUPTED_MARKER in item for item in parsed
+    )
+
+
+def _build_judge_transcript(turns: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Build judge transcript; mark interrupted turns only when warnings say so."""
+    transcript: list[dict[str, Any]] = []
+    for turn in turns:
+        entry: dict[str, Any] = {
+            "speaker": turn["speaker"],
+            "text": turn["text"],
+        }
+        if _warnings_indicate_interrupted(turn.get("warnings_json")):
+            entry["interrupted"] = True
+        transcript.append(entry)
+    return transcript
+
 
 @dataclass
 class SessionState:
@@ -285,7 +321,7 @@ class SessionService:
         user_profile: dict[str, Any],
     ) -> dict[str, Any]:
         turns = self.db.list_turns(session_id)
-        transcript = [{"speaker": t["speaker"], "text": t["text"]} for t in turns]
+        transcript = _build_judge_transcript(turns)
         result = self.judge.evaluate(config, persona, transcript, user_profile)
         scores = result.get("scores", {})
         avg = result.get("avg_score")
