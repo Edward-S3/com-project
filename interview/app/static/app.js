@@ -146,6 +146,34 @@ async function setupIoMode(res) {
   }
 }
 
+function showJudgingLoading() {
+  const overlay = document.getElementById("judging-overlay");
+  const err = document.getElementById("judging-error");
+  if (overlay) overlay.hidden = false;
+  if (err) {
+    err.hidden = true;
+    err.textContent = "";
+  }
+  const endBtn = document.getElementById("end-btn");
+  if (endBtn) endBtn.disabled = true;
+}
+
+function hideJudgingLoading() {
+  const overlay = document.getElementById("judging-overlay");
+  if (overlay) overlay.hidden = true;
+  const endBtn = document.getElementById("end-btn");
+  if (endBtn) endBtn.disabled = false;
+}
+
+function showJudgingError(message) {
+  hideJudgingLoading();
+  const err = document.getElementById("judging-error");
+  if (err) {
+    err.textContent = message;
+    err.hidden = false;
+  }
+}
+
 function handleVoiceEvent(msg) {
   if (msg.type === "status") {
     if (msg.status === "ready") {
@@ -154,6 +182,10 @@ function handleVoiceEvent(msg) {
       document.getElementById("voice-status").textContent = "音声: 再接続中…";
     } else if (msg.status === "closed") {
       document.getElementById("voice-status").textContent = "音声: 切断";
+      const overlay = document.getElementById("judging-overlay");
+      if (overlay && !overlay.hidden) {
+        showJudgingError("音声接続が切断されました。面談終了を再試行してください。");
+      }
     }
   }
   if (msg.type === "audio") {
@@ -170,6 +202,7 @@ function handleVoiceEvent(msg) {
   }
   if (msg.type === "ended" && msg.report) {
     document.getElementById("speaking-indicator").hidden = true;
+    hideJudgingLoading();
     renderReport(msg.report);
     enableNav("s04");
     showScreen("s04");
@@ -177,6 +210,10 @@ function handleVoiceEvent(msg) {
   }
   if (msg.type === "error") {
     document.getElementById("voice-status").textContent = `音声エラー: ${msg.message}`;
+    const overlay = document.getElementById("judging-overlay");
+    if (overlay && !overlay.hidden) {
+      showJudgingError(`採点または音声接続でエラーが発生しました: ${msg.message}`);
+    }
   }
 }
 
@@ -293,13 +330,22 @@ document.getElementById("chat-form").onsubmit = async (e) => {
 
 document.getElementById("end-btn").onclick = async () => {
   if (state.ioMode === "voice" && state.voice && state.voice.ready) {
+    showJudgingLoading();
     state.voice.endSession();
     return;
   }
-  const report = await api(`/api/sessions/${state.sessionId}/end`, { method: "POST" });
-  renderReport(report);
-  enableNav("s04");
-  showScreen("s04");
+  showJudgingLoading();
+  try {
+    const report = await api(`/api/sessions/${state.sessionId}/end`, { method: "POST" });
+    hideJudgingLoading();
+    renderReport(report);
+    enableNav("s04");
+    showScreen("s04");
+  } catch (err) {
+    showJudgingError(
+      `採点に失敗しました。再試行してください。(${err && err.message ? err.message : "エラー"})`
+    );
+  }
 };
 
 function loadFiveSteps() {
